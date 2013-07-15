@@ -26,7 +26,18 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <!-- Sidebar -->
+        <aside class="span4">
+          <div rd-top-rentals></div>
+        </aside>
+
+        <!-- View Placeholder -->
+        <section class="span8" ng-view>
+        </section>
+      </div>
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -64,6 +75,8 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/services/rotten_tomatoes_api.js"></script>
+    <script src="scripts/directives/rd_top_rentals.js"></script>
     <!-- endbuild -->
 </body>
 </html>

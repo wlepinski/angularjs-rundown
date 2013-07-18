@@ -26,9 +26,11 @@ angular.module('angularjsRundownApp')
         require: '^form',
         link: function postLink(scope, element, attrs, controller) {
           scope.$watch('q', debounce(function(newValue, oldValue){
-            $location.path('search');
-            $location.search('q', newValue);
-            scope.$apply();
+            if (newValue) {
+              $location.path('search');
+              $location.search('q', newValue);
+              scope.$apply();
+            }
           }, 300));
         }
       };

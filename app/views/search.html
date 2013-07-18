@@ -1,5 +1,7 @@
-<ul>
-  <li ng-repeat="movie in results.movies">
-    <a href="#/movie/{{movie.id}}">{{movie.year}} {{movie.title}}</a>
-  </li>
-</ul>
+<div class="search_results" ng-show="query">
+  <h2>Search results for <small>{{query}}</small></h2>
+  <ul class="unstyled movie-cards">
+    <li rd-movie-card data-movie="movie" ng-repeat="movie in results.movies">
+    </li>
+  </ul>
+</div>

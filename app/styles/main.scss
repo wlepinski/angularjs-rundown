@@ -1,10 +1,11 @@
+@import "compass";
 @import "bootstrap-sass/lib/bootstrap";
 @import "bootstrap-sass/lib/responsive";
 @import "mixins";
 
 /* Put your CSS here */
 body {
-  background: #000;
+  background: #444;
   font-family: Dosis, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #FFF;
   background-size: auto 100%;
@@ -62,6 +63,64 @@ body {
       background-repeat: no-repeat;
       background-position: 10px center;
       padding-left: 36px;
+    }
+  }
+}
+
+.movie-cards {
+  .movie-card {
+    float: left;
+    width: 175px;
+    height: 175px;
+    margin: emCalc(10px);
+  }
+}
+
+.movie-card {
+  position: relative;
+  background-size: 110% auto;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+  @include transition(
+    background-size 200ms,
+    box-shadow 200ms 200ms
+  );
+  @include transform(scale(1));
+  @include border-radius(5px);
+
+  &:hover {
+    background-size: 120% auto;
+    // @include transform(scale(1.1));
+    @include box-shadow(inset 0 0 20px rgba(black, 0.8));
+  }
+
+  .year {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: #f30;
+    font-size: emCalc(14px);
+    font-weight: 100;
+    padding: 0 emCalc(10px);
+  }
+
+  a {
+    z-index: 1;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: rgba(#000, 0.7);
+    display: block;
+    text-align: center;
+    padding: emCalc(10px);
+
+    span {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }

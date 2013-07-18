@@ -11,11 +11,13 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <!-- build:css({.tmp,app}) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
-        <!-- endbuild -->
+    <link href='http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
 </head>
-  <body ng-app="angularjsRundownApp">
+  <body ng-app="angularjsRundownApp" rd-background-image="backgroundImage">
     <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
@@ -26,8 +28,8 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container-fluid">
-      <div class="row-fluid">
+    <div class="container">
+      <div class="row">
         <!-- Sidebar -->
         <aside class="span4">
           <div rd-top-rentals></div>
@@ -75,8 +77,13 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/movie_details.js"></script>
     <script src="scripts/services/rotten_tomatoes_api.js"></script>
     <script src="scripts/directives/rd_top_rentals.js"></script>
+    <script src="scripts/directives/rd_background_image.js"></script>
+    <script src="scripts/directives/rd_movie_score.js"></script>
+    <script src="scripts/filters/time.js"></script>
+    <script src="scripts/filters/list.js"></script>
     <!-- endbuild -->
 </body>
 </html>

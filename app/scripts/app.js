@@ -3,6 +3,10 @@
 angular.module('angularjsRundownApp', [])
   .config(function ($routeProvider) {
     $routeProvider
+      .when('/movie/:movie_id', {
+        templateUrl: 'views/movie_details.html',
+        controller: 'MovieDetailsCtrl'
+      })
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
@@ -10,4 +14,15 @@ angular.module('angularjsRundownApp', [])
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .run(['$rootScope', function($rootScope){
+      $rootScope.getStyle = function() {
+        var style = {};
+
+        if ($rootScope.backgroundImage) {
+          style.backgroundImage = 'url("' + $rootScope.backgroundImage + '");';
+        }
+
+        return style;
+      }
+    }]);

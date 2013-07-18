@@ -7,7 +7,7 @@ angular.module('angularjsRundownApp')
       return url + '?_=' + new Date().getTime();
     };
 
-    // Public API here
+    // Public API he,re
     return {
       topRentals: function() {
         var defer = $q.defer();
@@ -18,6 +18,16 @@ angular.module('angularjsRundownApp')
           });
 
         return defer.promise;
-      }
+      },
+      movieInfo: function(movieId) {
+        var defer = $q.defer();
+
+        $http.get(getUrl('api/public/v1.0/movies/' + movieId + '.json'))
+          .success(function(data){
+            defer.resolve(data);
+          });
+
+        return defer.promise;
+      },
     };
   }]);

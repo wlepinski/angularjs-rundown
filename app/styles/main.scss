@@ -1,12 +1,55 @@
 @import "bootstrap-sass/lib/bootstrap";
+@import "bootstrap-sass/lib/responsive";
+@import "mixins";
 
 /* Put your CSS here */
-html, body {
-  margin: 20px;
+body {
+  background: #fafafa;
+  font-family: Dosis, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #FFF;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+
+  @media (min-width: 667px) {
+    background-size: 100% auto;
+  }
 }
 
-body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+.container {
+  background-color: rgba(0, 0, 0, 0.7);
+  margin-top: emCalc(20px);
+  @include border-radius(8px);
+  @include box-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+}
+
+.rd-top-rentals {
+  margin: 1em;
+}
+
+.view {
+  margin: 1em;
+}
+
+.movie-detail {
+  img.movie-poster {
+    float: left;
+    margin-right: emCalc(20px);
+  }
+
+  .movie-imdb-link {
+    color: gold;
+
+    &:before {
+      display: inline-block;
+      content: image-url("icon_imdb.png");
+      vertical-align: middle;
+      margin-right: emCalc(10px);
+    }
+  }
+}
+
+.movie-title {
+  font-weight: 100;
 }

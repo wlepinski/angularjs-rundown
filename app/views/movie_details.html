@@ -1,0 +1,35 @@
+<section id="section-movie-details" class="view movie-detail" ng-show="movie">
+  <h2 class="movie-title">
+    <small>{{movie.year}}</small>
+    {{movie.title}}
+  </h2>
+
+  <p>
+    <img class="movie-poster" ng-src="{{movie.posters.thumbnail}}" alt="{{movie.title}} Poster">
+    {{movie.synopsis}}
+  </p>
+
+  <a class="movie-imdb-link" ng-href="http://www.imdb.com/title/tt{{movie.alternate_ids.imdb}}" title="View on IMDB">View on IMDB</a>
+
+  <rd-movie-score movie="movie"></rd-movie-score>
+
+  <div class="row-fluid">
+    <div class="span6">
+      <h5>Release Dates:</h5>
+      <ul>
+        <li class="released-date theather">In Theaters: {{movie.release_dates.theater | date}}</li>
+        <li class="released-date dvd">On DVD: {{movie.release_dates.dvd | date}}</li>
+      </ul>
+    </div>
+    <div class="span6">
+      <h5>Other Info:</h5>
+      <ul>
+        <li class="runtime">Runtime: {{movie.runtime | time}}</li>
+        <li class="genres">Studio: {{movie.studio}}</li>
+        <li class="genres">Genres: {{movie.genres | list}}</li>
+        <li class="directors">Directors: {{movie.abridged_directors | list:'name'}}</li>
+      </ul>
+    </div>
+  </div>
+
+</section>

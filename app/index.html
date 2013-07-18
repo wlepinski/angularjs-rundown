@@ -31,12 +31,15 @@
     <div class="container">
       <div class="row">
         <!-- Sidebar -->
-        <aside class="span4">
+        <aside id="sidebar" class="span4">
+          <form name="movie-search-form" rd-search-form>
+            <input type="text" ng-model="q" class="input-block-level" name="q" placeholder="Search for a movie here...">
+          </form>
           <div rd-top-rentals></div>
         </aside>
 
         <!-- View Placeholder -->
-        <section class="span8" ng-view>
+        <section id="view-holder" class="span8" ng-view>
         </section>
       </div>
     </div>
@@ -84,6 +87,8 @@
     <script src="scripts/directives/rd_movie_score.js"></script>
     <script src="scripts/filters/time.js"></script>
     <script src="scripts/filters/list.js"></script>
+    <script src="scripts/directives/rd_search_form.js"></script>
+    <script src="scripts/controllers/search.js"></script>
     <!-- endbuild -->
 </body>
 </html>

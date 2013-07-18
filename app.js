@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var util = require('util');
 var request = require('request');
 var app = express();
 
@@ -47,9 +48,9 @@ app.all('/api/public/v1.0/*', function (req, res, next) {
   var proxiedReq = request({
     uri: uri,
     method: method,
-    qs: {
+    qs: util._extend({
       apiKey: apiKey
-    }
+    }, req.query)
   }, function(error, response, body){
     console.log(arguments);
     if (error) return res.send(500, error);

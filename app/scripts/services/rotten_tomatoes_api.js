@@ -29,5 +29,26 @@ angular.module('angularjsRundownApp')
 
         return defer.promise;
       },
+      search: function(q, page, page_limit) {
+        page_limit = page_limit || 30;
+        page = page || 1;
+
+        var defer = $q.defer();
+
+        $http({
+            method: 'GET',
+            url: getUrl('api/public/v1.0/movies.json'),
+            params: {
+              q: q,
+              page: page,
+              page_limit: page_limit
+            }
+          })
+          .success(function(data){
+            defer.resolve(data);
+          });
+
+        return defer.promise;
+      }
     };
   }]);

@@ -4,7 +4,7 @@
 
 /* Put your CSS here */
 body {
-  background: #fafafa;
+  background: #000;
   font-family: Dosis, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #FFF;
   background-size: auto 100%;
@@ -12,13 +12,15 @@ body {
   background-position: center center;
   background-attachment: fixed;
 
+  @include transition(background 0.5s linear);
+
   @media (min-width: 667px) {
     background-size: 100% auto;
   }
 }
 
 .container {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(black, 0.75);
   margin-top: emCalc(20px);
   @include border-radius(8px);
   @include box-shadow(0 0 20px rgba(0, 0, 0, 0.5));
@@ -50,6 +52,16 @@ body {
   }
 }
 
-.movie-title {
-  font-weight: 100;
+#sidebar {
+  form {
+    margin: emCalc(10px);
+
+    input {
+      background-image: image-url("icon_search.svg");
+      background-size: 16px 16px;
+      background-repeat: no-repeat;
+      background-position: 10px center;
+      padding-left: 36px;
+    }
+  }
 }

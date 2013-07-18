@@ -7,7 +7,11 @@ angular.module('angularjsRundownApp')
       link: function postLink(scope, element, attrs) {
         scope.$watch(attrs.rdBackgroundImage, function(newValue, oldValue, scope){
           if (newValue) {
-            element.css('background-image', 'url("' + newValue + '")');
+            var image = new Image();
+            image.onload = function() {
+              element.css('background-image', 'url("' + newValue + '")');
+            };
+            image.src = newValue;
           }
         });
       }

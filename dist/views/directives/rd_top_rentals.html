@@ -1,0 +1,8 @@
+<section class="rd-top-rentals">
+  <h5>Top Rentals</h5>
+  <ul class="unstyled">
+    <li ng-repeat="movie in topRentals.movies">
+      <a ng-href="#/movie/{{movie.id}}">{{movie.year}} - {{movie.title}}</a>
+    </li>
+  </ul>
+</section>

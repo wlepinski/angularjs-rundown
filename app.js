@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var path = require('path');
 var util = require('util');
@@ -39,25 +41,26 @@ app.get('/', function(req, res){
   res.render('index');
 });
 
-app.all('/api/public/v1.0/*', function (req, res, next) {
+app.all('/api/public/v1.0/*', function (req, res) {
   var baseUrl = 'http://api.rottentomatoes.com/api/public/v1.0/';
   var apiKey = process.env.ROTTEN_TOMATOES_APIKEY;
   var uri = baseUrl + req.params[0];
   var method = req.method.toLowerCase();
 
-  var proxiedReq = request({
+  request({
     uri: uri,
     method: method,
     qs: util._extend({
       apiKey: apiKey
     }, req.query)
   }, function(error, response, body){
-    console.log(arguments);
-    if (error) return res.send(500, error);
+    if (error) {
+      return res.send(500, error);
+    }
     return res.send(JSON.parse(body));
   });
 });
 
 require('http').createServer(app).listen(app.get('port'), function () {
-    console.log('Express (' + app.get('env') + ') server listening on port ' + app.get('port'));
+  console.log('Express (' + app.get('env') + ') server listening on port ' + app.get('port'));
 });

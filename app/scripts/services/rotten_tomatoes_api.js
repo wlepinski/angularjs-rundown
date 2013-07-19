@@ -29,8 +29,18 @@ angular.module('angularjsRundownApp')
 
         return defer.promise;
       },
-      search: function(q, page, page_limit) {
-        page_limit = page_limit || 30;
+      movieClips: function (movieId) {
+        var defer = $q.defer();
+
+        $http.get(getUrl('api/public/v1.0/movies/' + movieId + '/clips.json'))
+          .success(function(data){
+            defer.resolve(data);
+          });
+
+        return defer.promise;
+      },
+      search: function(q, page, pageLimit) {
+        pageLimit = pageLimit || 30;
         page = page || 1;
 
         var defer = $q.defer();
@@ -39,9 +49,9 @@ angular.module('angularjsRundownApp')
             method: 'GET',
             url: getUrl('api/public/v1.0/movies.json'),
             params: {
-              q: q,
-              page: page,
-              page_limit: page_limit
+              'q': q,
+              'page': page,
+              'page_limit': pageLimit
             }
           })
           .success(function(data){

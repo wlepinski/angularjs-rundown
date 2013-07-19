@@ -1,3 +1,3 @@
-@function emCalc($target, $context : 16px) {
+@function emCalc($target, $context : 14px) {
   @return ($target / $context) * 1em;
 }

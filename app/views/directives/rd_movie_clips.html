@@ -1,0 +1,13 @@
+<section class="rd-movie-clips">
+  <h4>Movie Clips</h4>
+  {{clips | json}}
+
+  <div class="rd-movie-clip"
+    data-ng-repeat="clip in data.clips"
+    data-rd-background-image="clip.thumbnail">
+    <a data-ng-href="clip.links.alternate">
+      <h5>{{clip.title}}</h5>
+      <small class="duration">{{clip.duration | time}}</small>
+    </a>
+  </div>
+</section>

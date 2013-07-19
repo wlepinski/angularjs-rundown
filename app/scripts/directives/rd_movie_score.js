@@ -5,6 +5,7 @@ angular.module('angularjsRundownApp')
     return {
       templateUrl: '/views/directives/rd_movie_score.html',
       restrict: 'E',
+      replace: true,
       scope: {
         movie: '='
       },

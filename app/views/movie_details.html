@@ -1,11 +1,12 @@
 <section id="section-movie-details" class="view movie-detail" ng-show="movie">
+  <img class="movie-poster" ng-src="{{movie.posters.thumbnail}}" alt="{{movie.title}} Poster" width="61" height="91">
+
   <h2 class="movie-title">
     <small>{{movie.year}}</small>
     {{movie.title}}
   </h2>
 
-  <p>
-    <img class="movie-poster" ng-src="{{movie.posters.thumbnail}}" alt="{{movie.title}} Poster">
+  <p data-ng-show="movie.synopsis">
     {{movie.synopsis}}
   </p>
 

@@ -1,7 +1,16 @@
-<div class="search_results" ng-show="query">
-  <h2>Search results for <small>{{query}}</small></h2>
+<rd-pagination data-rd-pagination-total="results.total" data-on-paginate="paginate(currentPage);"></rd-pagination>
+<h2>Search results for <small>{{query}}</small></h2>
+
+<p ng-show="total">
+  <span>{{total}}</span> results found.
+</p>
+
+<div class="search_results" data-ng-show="results">
   <ul class="unstyled movie-cards">
-    <li rd-movie-card data-movie="movie" ng-repeat="movie in results.movies">
+    <li data-ng-repeat="movie in results.movies">
+      <div data-rd-movie-card></div>
     </li>
   </ul>
 </div>
+
+<div data-ng-show="!results">Loading</div>

@@ -6,6 +6,6 @@ angular.module('angularjsRundownApp')
       $scope.movie = rottenTomatoesApi.movieInfo($routeParams['movie_id']);
 
       $scope.movie.then(function(data){
-        $rootScope.backgroundImage = data.posters.detailed;
+        $rootScope.backgroundImage = data.posters.original;
       });
     }]);

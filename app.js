@@ -62,6 +62,10 @@ app.all('/api/public/v1.0/*', function (req, res) {
   });
 });
 
+app.get('/image', function(req, res){
+  request(req.query.url).pipe(res);
+});
+
 require('http').createServer(app).listen(app.get('port'), function () {
   console.log('Express (' + app.get('env') + ') server listening on port ' + app.get('port'));
 });

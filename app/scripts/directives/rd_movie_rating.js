@@ -8,9 +8,6 @@ angular.module('angularjsRundownApp')
       restrict: 'E',
       scope: {
         movie: '='
-      },
-      link: function postLink(scope, element, attrs) {
-        console.log(scope.movie);
       }
     };
   });

@@ -64,25 +64,29 @@ body {
 
     h3 {
       position: absolute;
-      line-height: 1.5em;
-      font-size: emCalc(40px);
+      line-height: 1em;
+      font-size: emCalc(28px);
       font-weight: 200;
-      width: 100%;
       left: 20px;
+      right: 20px;
       bottom: 10px;
-      text-shadow: 0 0 5px rgba(black, 0.5);
+      text-shadow: 0 0 5px rgba(black, 1);
 
       small {
         display: block;
         color: #FFF;
-        line-height: 10px;
+        line-height: 1.5em;
       }
     }
 
-    @media (min-width: 770px) {
+    @media (min-width: 768px) {
       margin-top: -1em;
       @include border-top-right-radius(5px);
       @include border-bottom-left-radius(5px);
+
+      h3 {
+        font-size: emCalc(40px);
+      }
     }
 
     &:before {
@@ -107,25 +111,47 @@ body {
   }
 }
 
-#sidebar {
-  form {
-    input {
-      background-image: image-url("icon_search.svg");
-      background-size: 16px 16px;
-      background-repeat: no-repeat;
-      background-position: 10px center;
-      padding-left: 36px;
-      margin: 0;
+#movie-search-view {
+  min-height: emCalc(120px);
+
+  header {
+    h3 small {
+      display: block;
     }
+  }
+}
+
+form[name="movie-search-form"] {
+  margin: 0;
+
+  input {
+    background-image: image-url("icon_search.svg");
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 36px;
+    margin: 0 !important;
+    margin-right: 60px;
   }
 }
 
 .movie-cards {
   .movie-card {
-    float: left;
-    width: 175px;
     height: 175px;
-    margin: emCalc(10px);
+    margin-bottom: 1em;
+  }
+
+  @media (min-width: 768px) {
+    .movie-card {
+      float: left;
+      width: 50%;
+    }
+  }
+
+  @media (min-width: 980px) {
+    .movie-card {
+      width: 33.33333%;
+    }
   }
 }
 
@@ -140,7 +166,6 @@ body {
     box-shadow 400ms ease-in-out 0ms
   );
   @include transform(scale(1));
-  @include border-radius(5px);
   z-index: 1;
 
   &:hover {

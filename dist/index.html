@@ -13,7 +13,7 @@
 
     <link href="http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="styles/37854a85.main.css">
+    <link rel="stylesheet" href="styles/8308ba3b.main.css">
 </head>
   <body ng-app="angularjsRundownApp" rd-background-image="backgroundImage">
     <!--[if lt IE 7]>
@@ -29,15 +29,23 @@
     <div class="container">
       <div class="row">
         <!-- Sidebar -->
-        <aside id="sidebar" class="span4">
-          <form name="movie-search-form" rd-search-form="">
-            <input type="text" ng-model="q" class="input-block-level" name="q" placeholder="Search for a movie here...">
-          </form>
-          <div rd-top-rentals=""></div>
+        <aside id="sidebar" class="span3">
+          <!-- Search Box -->
+          <section class="sidebar-box">
+            <form name="movie-search-form" rd-search-form="">
+              <input type="text" ng-model="q" class="input-block-level" name="q" placeholder="Search for a movie here...">
+            </form>
+          </section>
+
+          <!-- Top Rentals -->
+          <rd-top-rentals class="sidebar-box"></rd-top-rentals>
+
+          <!-- Upcoming Movies -->
+          <rd-upcoming-movies class="sidebar-box"></rd-upcoming-movies>
         </aside>
 
         <!-- View Placeholder -->
-        <section id="view-holder" class="span8" ng-view="">
+        <section id="view-holder" class="span9" ng-view="">
         </section>
       </div>
     </div>
@@ -52,10 +60,10 @@
 
     <script src="bower_components/angular/angular.js"></script>
 
-    <script src="scripts/bd6ce9e3.plugins.js"></script>
+    <script src="scripts/bf3f07ce.plugins.js"></script>
 
     <script src="scripts/25e920e4.modules.js"></script>
 
-    <script src="scripts/4461b85b.scripts.js"></script>
+    <script src="scripts/502ae32b.scripts.js"></script>
 </body>
 </html>

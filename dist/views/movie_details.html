@@ -1,36 +1,53 @@
-<section id="section-movie-details" class="view movie-detail" ng-show="movie">
-  <img class="movie-poster" ng-src="{{movie.posters.thumbnail}}" alt="{{movie.title}} Poster" width="61" height="91">
+<section id="movie-details-view" class="view">
 
-  <h2 class="movie-title">
-    <small>{{movie.year}}</small>
-    {{movie.title}}
-  </h2>
+  <rd-loading data-ng-show="!movie"></rd-loading>
 
-  <p data-ng-show="movie.synopsis">
-    {{movie.synopsis}}
-  </p>
+  <section class="movie-detail" data-ng-show="movie">
+    <img class="movie-poster" data-ng-src="{{movie.posters.thumbnail}}" alt="{{movie.title}} Poster" width="61" height="91">
 
-  <a class="movie-imdb-link" ng-href="http://www.imdb.com/title/tt{{movie.alternate_ids.imdb}}" title="View on IMDB">View on IMDB</a>
+    <h3>
+      <small>{{movie.year}}</small>
+      {{movie.title}}
+    </h3>
 
-  <rd-movie-score movie="movie"></rd-movie-score>
+    <a class="movie-imdb-link" data-ng-href="http://www.imdb.com/title/tt{{movie.alternate_ids.imdb}}" title="View on IMDB">View on IMDB</a>
 
-  <div class="row-fluid">
-    <div class="span6">
-      <h5>Release Dates:</h5>
-      <ul>
-        <li class="released-date theather">In Theaters: {{movie.release_dates.theater | date}}</li>
-        <li class="released-date dvd">On DVD: {{movie.release_dates.dvd | date}}</li>
-      </ul>
+    <rd-movie-rating data-movie="movie"></rd-movie-rating>
+
+    <p data-ng-show="movie.synopsis">
+      {{movie.synopsis}}
+    </p>
+
+    <rd-movie-score data-movie="movie"></rd-movie-score>
+
+    <div class="row-fluid">
+      <div class="span6">
+        <h5>Release Dates:</h5>
+        <ul>
+          <li class="released-date theather">In Theaters: {{movie.release_dates.theater | date}}</li>
+          <li class="released-date dvd">On DVD: {{movie.release_dates.dvd | date}}</li>
+        </ul>
+      </div>
+      <div class="span6">
+        <h5>Other Info:</h5>
+        <ul>
+          <li class="runtime">Runtime: {{movie.runtime | time}}</li>
+          <li class="genres">Studio: {{movie.studio}}</li>
+          <li class="genres">Genres: {{movie.genres | list}}</li>
+          <li class="directors">Directors: {{movie.abridged_directors | list:'name'}}</li>
+        </ul>
+      </div>
     </div>
-    <div class="span6">
-      <h5>Other Info:</h5>
-      <ul>
-        <li class="runtime">Runtime: {{movie.runtime | time}}</li>
-        <li class="genres">Studio: {{movie.studio}}</li>
-        <li class="genres">Genres: {{movie.genres | list}}</li>
-        <li class="directors">Directors: {{movie.abridged_directors | list:'name'}}</li>
-      </ul>
-    </div>
-  </div>
 
+    <!-- Movie Clips -->
+    <div class="row-fluid">
+      <div class="span8">
+        <rd-movie-clips data-movie="movie"></rd-movie-clips>
+      </div>
+      <div class="span4">
+        <rd-movie-similar data-movie="movie"></rd-movie-similar>
+      </div>
+    </div>
+
+  </section>
 </section>

@@ -1,0 +1,13 @@
+<section class="rd-movie-rating">
+  <div class="clearfix">
+    <span class="critics_score">
+      {{movie.ratings.critics_score}}%
+      <small>Critics score</small>
+    </span>
+    <span class="audience_score">
+      {{movie.ratings.audience_score}}%
+      <small>Liked it</small>
+    </span>
+  </div>
+  <h5 data-ng-show="movie.critics_consensus">{{movie.critics_consensus}}</h5>
+</section>

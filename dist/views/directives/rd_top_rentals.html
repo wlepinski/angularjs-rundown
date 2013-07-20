@@ -1,6 +1,8 @@
 <section class="rd-top-rentals">
   <h5>Top Rentals</h5>
-  <span data-ng-show="topRentals">Loading</span>
+
+  <rd-loading data-ng-show="!topRentals"></rd-loading>
+
   <ul class="unstyled">
     <li data-ng-repeat="movie in topRentals.movies">
       <a data-ng-href="#/movie/{{movie.id}}">{{movie.year}} - {{movie.title}}</a>

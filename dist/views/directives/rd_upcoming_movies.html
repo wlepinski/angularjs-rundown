@@ -1,0 +1,11 @@
+<section class="rd-upcoming-movies">
+  <h5>Upcoming Movies</h5>
+
+  <rd-loading data-ng-show="!upcoming"></rd-loading>
+
+  <ul class="unstyled">
+    <li data-ng-repeat="movie in upcoming.movies">
+      <a data-ng-href="#/movie/{{movie.id}}">{{movie.year}} - {{movie.title}}</a>
+    </li>
+  </ul>
+</section>

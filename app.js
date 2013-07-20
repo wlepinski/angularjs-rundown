@@ -34,7 +34,7 @@ app.configure('production', function () {
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
-  app.use(connect.compress());
+  app.use(express.compress());
   app.use(express.static(path.join(__dirname, 'dist')));
 });
 

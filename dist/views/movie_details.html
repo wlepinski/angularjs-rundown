@@ -5,14 +5,16 @@
   <section class="movie-detail" data-ng-show="movie">
     <img class="movie-poster" data-ng-src="{{movie.posters.thumbnail}}" alt="{{movie.title}} Poster" width="61" height="91">
 
-    <h3>
-      <small>{{movie.year}}</small>
-      {{movie.title}}
-    </h3>
-
-    <a class="movie-imdb-link" data-ng-href="http://www.imdb.com/title/tt{{movie.alternate_ids.imdb}}" title="View on IMDB">View on IMDB</a>
+    <header rd-background-image="movie.posters.original">
+      <h3>
+        {{movie.title}}
+        <small>{{movie.year}}</small>
+      </h3>
+    </header>
 
     <rd-movie-rating data-movie="movie"></rd-movie-rating>
+
+    <a class="movie-imdb-link" data-ng-href="http://www.imdb.com/title/tt{{movie.alternate_ids.imdb}}" title="View on IMDB">View on IMDB</a>
 
     <p data-ng-show="movie.synopsis">
       {{movie.synopsis}}

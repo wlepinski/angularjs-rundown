@@ -14,6 +14,10 @@ body {
   background-attachment: fixed;
 
   @include transition(background 0.5s linear);
+
+  @media (min-width: 499px) {
+    background-size: 100% auto;
+  }
 }
 
 * { @include box-sizing(border-box); }
@@ -40,14 +44,55 @@ body {
 }
 
 .movie-detail {
+  position: relative;
+
   img.movie-poster {
     display: none;
     float: right;
     margin-left: emCalc(20px);
   }
 
-  h3 {
-    line-height: 1.5em;
+  header {
+    position: relative;
+    background-size: 100% auto;
+    background-position: center -50px;
+    min-height: emCalc(300px);
+    margin-bottom: emCalc(20px);
+    margin-right: -1em;
+    margin-top: 1em;
+    margin-left: -1em;
+
+    h3 {
+      position: absolute;
+      line-height: 1.5em;
+      font-size: emCalc(40px);
+      font-weight: 200;
+      width: 100%;
+      left: 20px;
+      bottom: 10px;
+      text-shadow: 0 0 5px rgba(black, 0.5);
+
+      small {
+        display: block;
+        color: #FFF;
+        line-height: 10px;
+      }
+    }
+
+    @media (min-width: 770px) {
+      margin-top: -1em;
+      @include border-top-right-radius(5px);
+      @include border-bottom-left-radius(5px);
+    }
+
+    &:before {
+      position: absolute;
+      content: '';
+      top: 0px; left: 0px; right: 0px; bottom: 0px;
+      @include background-image(
+        linear-gradient(top, rgba(black, 0), rgba(black, 0.6))
+      );
+    }
   }
 
   .movie-imdb-link {
@@ -60,8 +105,6 @@ body {
       margin-right: emCalc(10px);
     }
   }
-
-
 }
 
 #sidebar {
@@ -183,7 +226,7 @@ body {
     padding-right: emCalc(60px);
     min-height: emCalc(90px);
     margin-bottom: emCalc(10px);
-    @include transition(box-shadow 200ms ease-in-out 500ms, background-size 500ms);
+    @include transition(box-shadow 200ms ease-in-out 500ms, background-size 500ms ease-out);
 
     &:hover {
       background-size: 110% auto;
@@ -228,13 +271,6 @@ body {
       margin-left: 2%;
     }
   }
-
-  // @media (min-width: 1200px) {
-  //   .rd-movie-clip {
-  //     float: left;
-  //     width: 33.333333%;
-  //   }
-  // }
 }
 
 .rd-movie-rating {
@@ -266,7 +302,7 @@ body {
     margin-top: 1em;
     margin-bottom: 0;
     clear: both;
-    color: darken(gold, 20%);
+    color: darken(gold, 40%);
     padding: 0 emCalc(10px);
     text-shadow: 0 1px 1px rgba(white, 0.2);
   }
@@ -291,15 +327,22 @@ body {
   }
 
   @media (min-width: 950px) {
-    float: right;
+    position: absolute;
+    top: 0px;
+    right: 0px;
     max-width: 250px;
     margin-left: 2em;
-    margin-top: 0;
     margin-bottom: 2em;
     margin-right: -1em;
+    background: rgba(gold, 0.8);
+    @include border-left-radius(10px);
 
     span {
       padding: emCalc(10px, 40px);
+    }
+
+    h5 {
+      margin-top: 0;
     }
   }
 }

@@ -8,7 +8,7 @@ body {
   background: #444;
   font-family: Dosis, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #FFF;
-  background-size: 100% auto;
+  background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
@@ -183,10 +183,12 @@ body {
     padding-right: emCalc(60px);
     min-height: emCalc(90px);
     margin-bottom: emCalc(10px);
-    @include transition(box-shadow 1s);
+    @include transition(box-shadow 200ms ease-in-out 500ms, background-size 500ms);
 
     &:hover {
-      @include box-shadow(inset 0 0 20px rgba(black, 0.5));
+      background-size: 110% auto;
+      background-position: center center;
+      @include box-shadow(inset 0 0 20px rgba(black, 0.9));
     }
 
     a {

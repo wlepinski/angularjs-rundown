@@ -1,0 +1,13 @@
+'use strict';
+
+describe('Directive: rdUpcomingMovies', function () {
+  beforeEach(module('angularjsRundownApp'));
+
+  var element;
+
+  it('should make hidden element visible', inject(function ($rootScope, $compile) {
+    element = angular.element('<rd-upcoming-movies></rd-upcoming-movies>');
+    element = $compile(element)($rootScope);
+    expect(element.text()).toBe('this is the rdUpcomingMovies directive');
+  }));
+});

@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('angularjsRundownApp')
-  .controller('rdMovieClipsCtrl', ['$scope', 'rottenTomatoesApi', function($scope, rottenTomatoesApi){
+  .controller('rdMovieSimilarCtrl', ['$scope', 'rottenTomatoesApi', function($scope, rottenTomatoesApi){
     this.loadMovieClips = function() {
-      $scope.data = rottenTomatoesApi.movieClips($scope.movie.id);
+      $scope.data = rottenTomatoesApi.similar($scope.movie.id);
     };
   }])
-  .directive('rdMovieClips', function () {
+  .directive('rdMovieSimilar', function () {
     return {
-      templateUrl: '/views/directives/rd_movie_clips.html',
+      templateUrl: '/views/directives/rd_movie_similar.html',
       restrict: 'E',
-      controller: 'rdMovieClipsCtrl',
+      controller: 'rdMovieSimilarCtrl',
       scope: {
         movie: '='
       },

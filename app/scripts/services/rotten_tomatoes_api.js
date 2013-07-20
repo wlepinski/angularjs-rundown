@@ -39,6 +39,26 @@ angular.module('angularjsRundownApp')
 
         return defer.promise;
       },
+      similar: function (movieId) {
+        var defer = $q.defer();
+
+        $http.get(getUrl('api/public/v1.0/movies/' + movieId + '/similar.json'))
+          .success(function(data){
+            defer.resolve(data);
+          });
+
+        return defer.promise;
+      },
+      upcoming: function (movieId) {
+        var defer = $q.defer();
+
+        $http.get(getUrl('api/public/v1.0/lists/movies/upcoming.json'))
+          .success(function(data){
+            defer.resolve(data);
+          });
+
+        return defer.promise;
+      },
       search: function(q, page, pageLimit) {
         pageLimit = pageLimit || 30;
         page = page || 1;

@@ -26,8 +26,13 @@ body {
   @include box-shadow(0 0 20px rgba(0, 0, 0, 0.5));
 }
 
-.rd-top-rentals {
+.sidebar-box {
   margin: 1em;
+}
+
+.rd-top-rentals,
+.rd-upcoming-movies {
+  min-height: emCalc(80px);
 }
 
 .view {
@@ -61,14 +66,13 @@ body {
 
 #sidebar {
   form {
-    margin: emCalc(10px);
-
     input {
       background-image: image-url("icon_search.svg");
       background-size: 16px 16px;
       background-repeat: no-repeat;
       background-position: 10px center;
       padding-left: 36px;
+      margin: 0;
     }
   }
 }
@@ -169,6 +173,9 @@ body {
 }
 
 .rd-movie-clips {
+  @include clearfix;
+  min-height: emCalc(90px);
+
   .rd-movie-clip {
     position: relative;
     background-size: 100% auto;
@@ -209,19 +216,23 @@ body {
     }
   }
 
-  @media (min-width: 950px) {
+  @media (min-width: 980px) {
     .rd-movie-clip {
       float: left;
-      width: 50%;
+      width: 49%;
+    }
+
+    .rd-movie-clip:nth-child(2n) {
+      margin-left: 2%;
     }
   }
 
-  @media (min-width: 1200px) {
-    .rd-movie-clip {
-      float: left;
-      width: 33.333333%;
-    }
-  }
+  // @media (min-width: 1200px) {
+  //   .rd-movie-clip {
+  //     float: left;
+  //     width: 33.333333%;
+  //   }
+  // }
 }
 
 .rd-movie-rating {
@@ -284,5 +295,9 @@ body {
     margin-top: 0;
     margin-bottom: 2em;
     margin-right: -1em;
+
+    span {
+      padding: emCalc(10px, 40px);
+    }
   }
 }

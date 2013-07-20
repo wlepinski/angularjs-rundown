@@ -1,0 +1,11 @@
+<section class="rd-movie-clips" data-ng-show="data.movies">
+  <h4>Similar Movies</h4>
+
+  <rd-loading data-ng-show="!data.movies"></rd-loading>
+
+  <ul>
+    <li ng-repeat="movie in data.movies">
+      <a data-ng-href="#/movie/{{movie.id}}">{{movie.title}}</a>
+    </li>
+  </ul>
+</section>

@@ -7,10 +7,9 @@ angular.module('angularjsRundownApp')
   .directive('rdTopRentals', function () {
     return {
       templateUrl: '/views/directives/rd_top_rentals.html',
-      restrict: 'A',
+      restrict: 'E',
+      replace: true,
       controller: 'rdTopRentalsCtrl',
-      scope: {},
-      link: function postLink(scope, element, attrs) {
-      }
+      scope: true
     };
   });

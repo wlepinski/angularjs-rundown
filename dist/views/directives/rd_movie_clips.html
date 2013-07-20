@@ -3,10 +3,11 @@
 
   <rd-loading data-ng-show="!data.clips"></rd-loading>
 
-  <div class="rd-movie-clip" data-ng-repeat="clip in data.clips" data-rd-background-image="clip.thumbnail">
+  <div class="rd-movie-clip" data-ng-repeat="clip in data.clips | limitTo: limit" data-rd-background-image="clip.thumbnail">
     <a data-ng-href="{{clip.links.alternate}}">
       <h5>{{clip.title}}</h5>
       <small class="duration">{{clip.duration | time}}</small>
     </a>
   </div>
+  <a href="" ng-show="data.clips.length > limit" ng-click="seeAll();">See all {{data.clips.length}} clips.</a>
 </section>

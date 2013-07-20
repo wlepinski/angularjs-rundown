@@ -1,16 +1,25 @@
-<rd-pagination data-rd-pagination-total="results.total" data-on-paginate="paginate(currentPage);"></rd-pagination>
-<h2>Search results for <small>{{query}}</small></h2>
+<section id="movie-search-view" class="view">
+  <rd-pagination data-rd-pagination-total="results.total" data-on-paginate="paginate(currentPage);"></rd-pagination>
 
-<p ng-show="total">
-  <span>{{total}}</span> results found.
-</p>
+  <header>
+    <h3>
+      Search results:
+      <small>"{{query}}"</small>
+    </h3>
+  </header>
 
-<div class="search_results" data-ng-show="results">
-  <ul class="unstyled movie-cards">
-    <li data-ng-repeat="movie in results.movies">
-      <div data-rd-movie-card="" data-movie="movie"></div>
-    </li>
-  </ul>
-</div>
 
-<rd-loading data-ng-show="!results"></rd-loading>
+  <p ng-show="total">
+    <span>{{total}}</span> results found.
+  </p>
+
+  <div class="search_results" data-ng-show="results">
+    <ul class="unstyled movie-cards">
+      <li data-ng-repeat="movie in results.movies">
+        <div data-rd-movie-card="" data-movie="movie"></div>
+      </li>
+    </ul>
+  </div>
+
+  <rd-loading data-ng-show="!results"></rd-loading>
+</section>

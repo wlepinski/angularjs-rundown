@@ -6,7 +6,7 @@ angular.module('angularjsRundownApp')
   }])
   .directive('rdTopRentals', function () {
     return {
-      templateUrl: '/views/directives/rd_top_rentals.html',
+      templateUrl: 'views/directives/rd_top_rentals.html',
       restrict: 'E',
       replace: true,
       controller: 'rdTopRentalsCtrl',

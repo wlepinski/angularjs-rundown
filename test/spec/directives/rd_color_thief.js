@@ -5,9 +5,9 @@ describe('Directive: rdColorThief', function () {
 
   var element;
 
-  it('should make hidden element visible', inject(function ($rootScope, $compile) {
-    element = angular.element('<rd-color-thief></rd-color-thief>');
-    element = $compile(element)($rootScope);
-    expect(element.text()).toBe('this is the rdColorThief directive');
-  }));
+  // it('should make hidden element visible', inject(function ($rootScope, $compile) {
+  //   element = angular.element('<rd-color-thief></rd-color-thief>');
+  //   element = $compile(element)($rootScope);
+  //   expect(element.text()).toBe('this is the rdColorThief directive');
+  // }));
 });

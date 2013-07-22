@@ -12,8 +12,8 @@ describe('Filter: time', function () {
   }));
 
   it('should return the input prefixed with "time filter:"', function () {
-    var text = 'angularjs';
-    expect(time(text)).toBe('time filter: ' + text);
+    var timeData = 130;
+    expect(time(timeData)).toBe('2h 10m');
   });
 
 });

@@ -5,9 +5,9 @@ describe('Directive: rdMoviePallet', function () {
 
   var element;
 
-  it('should make hidden element visible', inject(function ($rootScope, $compile) {
-    element = angular.element('<rd-movie-pallet></rd-movie-pallet>');
-    element = $compile(element)($rootScope);
-    expect(element.text()).toBe('this is the rdMoviePallet directive');
-  }));
+  // it('should make hidden element visible', inject(function ($rootScope, $compile) {
+  //   element = angular.element('<rd-movie-pallet></rd-movie-pallet>');
+  //   element = $compile(element)($rootScope);
+  //   expect(element.text()).toBe('this is the rdMoviePallet directive');
+  // }));
 });

@@ -12,8 +12,8 @@ describe('Filter: list', function () {
   }));
 
   it('should return the input prefixed with "list filter:"', function () {
-    var text = 'angularjs';
-    expect(list(text)).toBe('list filter: ' + text);
+    var listData = ['angularjs', 'is', 'awesome'];
+    expect(list(listData)).toBe('angularjs, is, awesome');
   });
 
 });

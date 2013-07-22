@@ -109,6 +109,19 @@ body {
       margin-right: emCalc(10px);
     }
   }
+
+  .rd-movie-pallete {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+
+    span {
+      display: block;
+      float: left;
+      height: 8px;
+    }
+  }
 }
 
 #movie-search-view {
@@ -251,7 +264,7 @@ form[name="movie-search-form"] {
     padding-right: emCalc(60px);
     min-height: emCalc(90px);
     margin-bottom: emCalc(10px);
-    @include transition(box-shadow 200ms ease-in-out 500ms, background-size 500ms ease-out);
+    @include transition(box-shadow 100ms ease-in-out, background-size 100ms ease-out);
 
     &:hover {
       background-size: 110% auto;

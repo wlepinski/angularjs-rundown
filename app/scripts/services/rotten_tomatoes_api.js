@@ -4,7 +4,7 @@ angular.module('angularjsRundownApp')
   .factory('rottenTomatoesApi', ['$http', '$q', function($http, $q) {
     // Private methods
     var getUrl = function (url) {
-      return url + '?_=' + new Date().getTime();
+      return url;
     };
 
     // Public API he,re

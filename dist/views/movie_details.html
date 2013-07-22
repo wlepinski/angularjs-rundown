@@ -5,11 +5,13 @@
   <section class="movie-detail" data-ng-show="movie">
     <img class="movie-poster" data-ng-src="{{movie.posters.thumbnail}}" alt="{{movie.title}} Poster" width="61" height="91">
 
-    <header rd-background-image="movie.posters.original">
+    <header data-rd-background-image="movie.posters.original">
       <h3>
         {{movie.title}}
         <small>{{movie.year}}</small>
       </h3>
+
+      <div data-movie="movie" class="rd-movie-pallete"></div>
     </header>
 
     <rd-movie-rating data-movie="movie"></rd-movie-rating>

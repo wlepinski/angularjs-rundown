@@ -35,9 +35,9 @@ a {
 }
 
 #app {
-  background-color: rgba(black, 0.75);
-  margin: emCalc(70px) auto 0;
+  margin: emCalc(70px) auto emCalc(10px);
   min-height: emCalc(350px);
+  background-color: rgba(black, 0.75);
   @include border-radius(8px);
   @include box-shadow(0 0 20px rgba(0, 0, 0, 0.5));
 
@@ -105,6 +105,33 @@ a {
 .rd-top-rentals,
 .rd-upcoming-movies {
   min-height: emCalc(80px);
+  border: 1px solid rgba(white, 0.2);
+  @include border-radius(10px);
+
+  h5 {
+    padding: 0 emCalc(10px);
+  }
+
+  ul {
+    margin: 0;
+
+    li {
+      display: block;
+      line-height: 2em;
+
+      a {
+        display: block;
+        border-bottom: 1px dotted rgba(white, 0.2);
+        padding: 0 emCalc(10px);
+      }
+
+      &:last-child {
+        a {
+          border-bottom: none;
+        }
+      }
+    }
+  }
 }
 
 .view {
@@ -181,15 +208,38 @@ a {
   .rd-movie-pallete {
     position: absolute;
     bottom: 0px;
+    top: auto;
     left: 0px;
     right: 0px;
 
     span {
-      display: block;
-      float: left;
       height: 8px;
     }
   }
+}
+
+.rd-movie-pallete {
+
+
+  span {
+    display: block;
+    float: left;
+    height: 100%;
+
+    @include transition(background-color 1s);
+  }
+}
+
+body > .rd-movie-pallete {
+  @include transform(rotate(45deg));
+  height: 200%;
+  z-index: -1;
+  width: 100%;
+  position: fixed;
+  top: -100%;
+  left: -50%;
+  // margin-left: -50%;
+  // margin-top: -50%;
 }
 
 #movie-search-view {
@@ -464,9 +514,29 @@ form[name="movie-search-form"] {
 
 footer {
   padding: 1em;
+  margin: 0 0 emCalc(10px);
+  background-color: rgba(black, 0.75);
+  @include border-radius(8px);
+  @include box-shadow(0 0 20px rgba(0, 0, 0, 0.5));
 
   p {
     font-size: emCalc(11px);
-    text-align: center;
+    text-align: right;
+    text-transform: uppercase;
+    text-shadow: 0 0 2px rgba(black, 0.6);
+    margin: 0;
+
+    a {
+      &:after {
+        content: '';
+        display: inline-block;
+        background: image-url("icons_rotten_tomatoes.png");
+        background-position: -256px -144px;
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+        margin-left: emCalc(5px);
+      }
+    }
   }
 }

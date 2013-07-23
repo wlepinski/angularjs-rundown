@@ -7,6 +7,10 @@ angular.module('angularjsRundownApp')
       link: function postLink(scope, element, attrs) {
         var colorThief = new ColorThief();
 
+        if (!attrs.rdColorThief && !attrs.rdColorThiefProperty){
+          return;
+        }
+
         scope.$watch(attrs.rdColorThief, function(newValue, oldValue, scope){
           if (newValue) {
             var image = new Image();
@@ -16,7 +20,9 @@ angular.module('angularjsRundownApp')
               element.css('backgroundColor', 'rgb(' + color[0] + ',' + color[1] + ',' + color[2] + ')');
             };
 
-            image.src = '/image?url=' + newValue;
+            var remoteImage = scope.$eval(attrs.rdColorThief + '.' + attrs.rdColorThiefProperty);
+
+            image.src = '/image?url=' + encodeURIComponent(remoteImage);
           }
         });
       }

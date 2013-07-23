@@ -20,17 +20,4 @@ angular.module('angularjsRundownApp', [])
           redirectTo: '/'
         });
     }
-  ])
-  .run(['$rootScope',
-    function($rootScope) {
-      $rootScope.getStyle = function() {
-        var style = {};
-
-        if ($rootScope.backgroundImage) {
-          style.backgroundImage = 'url("' + $rootScope.backgroundImage + '");';
-        }
-
-        return style;
-      };
-    }
   ]);

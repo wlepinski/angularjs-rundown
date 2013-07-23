@@ -13,9 +13,9 @@
 
     <link href="http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="styles/b5d7928e.main.css">
+    <link rel="stylesheet" href="styles/f78264f8.main.css">
 </head>
-  <body ng-app="angularjsRundownApp" rd-color-thief="movieSelected">
+  <body ng-app="angularjsRundownApp" rd-color-thief="movieSelected" rd-color-thief-property="posters.thumbnail">
     <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
@@ -26,33 +26,23 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container">
+    <div id="app" class="container">
       <div class="row">
         <div class="span12">
           <!-- Search Box -->
-          <section class="sidebar-box">
-            <form name="movie-search-form" rd-search-form="">
-              <input type="text" ng-model="q" class="input-block-level" name="q" placeholder="Search for a movie here...">
-            </form>
-          </section>
+          <div data-ng-include="'views/includes/search_box.html'"></div>
         </div>
       </div>
-
       <div class="row">
         <!-- View Placeholder -->
-        <section id="view-holder" class="span9" ng-view="">
-        </section>
-
+        <section id="view-holder" class="span9" data-ng-view=""></section>
         <!-- Sidebar -->
-        <aside id="sidebar" class="span3">
-          <!-- Top Rentals -->
-          <rd-top-rentals class="sidebar-box"></rd-top-rentals>
-
-          <!-- Upcoming Movies -->
-          <rd-upcoming-movies class="sidebar-box"></rd-upcoming-movies>
-        </aside>
+        <aside id="sidebar" class="span3" data-ng-include="'views/includes/sidebar.html'"></aside>
       </div>
     </div>
+
+    <!-- Footer -->
+    <footer data-ng-include="'views/includes/footer.html'" class="container"></footer>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -67,8 +57,8 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
 
-    <script src="scripts/339dd147.plugins.js"></script>
+    <script src="scripts/19d435dc.plugins.js"></script>
 
-    <script src="scripts/7f1da2af.scripts.js"></script>
+    <script src="scripts/eb055802.scripts.js"></script>
 </body>
 </html>

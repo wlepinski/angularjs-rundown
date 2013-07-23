@@ -123,6 +123,52 @@ angular.module('angularjsRundownApp')
           });
 
         return defer.promise;
+      },
+
+      currentReleases: function(country, page, pageLimit) {
+        country = country || 'us';
+        pageLimit = pageLimit || 30;
+        page = page || 1;
+
+        var defer = $q.defer();
+
+        $http({
+            method: 'GET',
+            url: 'api/public/v1.0/lists/dvds/current_releases.json',
+            params: {
+              'country': country,
+              'page': page,
+              'page_limit': pageLimit
+            }
+          })
+          .success(function(data){
+            defer.resolve(data);
+          });
+
+        return defer.promise;
+      },
+
+      newReleases: function(country, page, pageLimit) {
+        country = country || 'us';
+        pageLimit = pageLimit || 30;
+        page = page || 1;
+
+        var defer = $q.defer();
+
+        $http({
+            method: 'GET',
+            url: 'api/public/v1.0/lists/dvds/new_releases.json',
+            params: {
+              'country': country,
+              'page': page,
+              'page_limit': pageLimit
+            }
+          })
+          .success(function(data){
+            defer.resolve(data);
+          });
+
+        return defer.promise;
       }
     };
   }]);

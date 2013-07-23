@@ -30,33 +30,23 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container">
+    <div id="app" class="container">
       <div class="row">
         <div class="span12">
           <!-- Search Box -->
-          <section class="sidebar-box">
-            <form name="movie-search-form" rd-search-form>
-              <input type="text" ng-model="q" class="input-block-level" name="q" placeholder="Search for a movie here...">
-            </form>
-          </section>
+          <div data-ng-include="'views/includes/search_box.html'"></div>
         </div>
       </div>
-
       <div class="row">
         <!-- View Placeholder -->
-        <section id="view-holder" class="span9" ng-view>
-        </section>
-
+        <section id="view-holder" class="span9" data-ng-view></section>
         <!-- Sidebar -->
-        <aside id="sidebar" class="span3">
-          <!-- Top Rentals -->
-          <rd-top-rentals class="sidebar-box"></rd-top-rentals>
-
-          <!-- Upcoming Movies -->
-          <rd-upcoming-movies class="sidebar-box"></rd-upcoming-movies>
-        </aside>
+        <aside id="sidebar" class="span3" data-ng-include="'views/includes/sidebar.html'"></aside>
       </div>
     </div>
+
+    <!-- Footer -->
+    <footer data-ng-include="'views/includes/footer.html'" class="container"></footer>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>

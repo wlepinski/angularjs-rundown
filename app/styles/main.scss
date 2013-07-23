@@ -1,7 +1,11 @@
 @import "compass";
+
+$linkColor: #ccc;
+
 @import "bootstrap-sass/lib/bootstrap";
 @import "bootstrap-sass/lib/responsive";
 @import "mixins";
+
 
 /* Put your CSS here */
 body {
@@ -20,14 +24,78 @@ body {
   }
 }
 
+a {
+  @include transition(color 200ms);
+}
+
 * { @include box-sizing(border-box); }
 
-.container {
+.home-widget {
+  min-height: emCalc(120px);
+}
+
+#app {
   background-color: rgba(black, 0.75);
-  margin: emCalc(20px) auto;
+  margin: emCalc(70px) auto 0;
   min-height: emCalc(350px);
   @include border-radius(8px);
   @include box-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+
+  &:before {
+    content: '';
+    background: image-url("icons_rotten_tomatoes.png");
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    margin-left: -32px;
+    z-index: -1;
+  }
+
+  &:after {
+    content: '';
+    background: image-url("icons_rotten_tomatoes.png");
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    margin-left: -32px;
+    z-index: -1;
+  }
+}
+
+#search-box {
+  margin-left: 0;
+
+  input {
+    width: 85%
+  }
+
+  a {
+    display: inline-block;
+    vertical-align: middle;
+    width: 15%;
+    min-height: 30px;
+    float: left;
+    text-align: center;
+
+    .icon-home {
+      vertical-align: middle;
+      margin-top: 3px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    input {
+      width: 95%;
+    }
+
+    a {
+      width: 5%;
+    }
+  }
 }
 
 .sidebar-box {
@@ -299,6 +367,11 @@ form[name="movie-search-form"] {
     }
   }
 
+  .seeall {
+    clear: both;
+    display: block;
+  }
+
   @media (min-width: 980px) {
     .rd-movie-clip {
       float: left;
@@ -309,6 +382,10 @@ form[name="movie-search-form"] {
       margin-left: 2%;
     }
   }
+}
+
+#movie-details-view {
+  min-height: 200px;
 }
 
 .rd-movie-rating {
@@ -382,5 +459,14 @@ form[name="movie-search-form"] {
     h5 {
       margin-top: 0;
     }
+  }
+}
+
+footer {
+  padding: 1em;
+
+  p {
+    font-size: emCalc(11px);
+    text-align: center;
   }
 }

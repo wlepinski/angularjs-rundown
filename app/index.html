@@ -42,7 +42,9 @@
       </div>
       <div class="row">
         <!-- View Placeholder -->
-        <section id="view-holder" class="span9" data-ng-view></section>
+        <section id="view-holder" class="span9"
+          data-ng-view=""
+          data-ng-animate="{ leave: 'view-animate-leave' }"></section>
         <!-- Sidebar -->
         <aside id="sidebar" class="span3" data-ng-include="'views/includes/sidebar.html'"></aside>
       </div>
@@ -62,7 +64,8 @@
       ga('send', 'pageview');
     </script>
 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script> -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
 
     <!-- build:js scripts/plugins.js -->
     <script src="bower_components/jquery/jquery.js"></script>

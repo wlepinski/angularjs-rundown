@@ -2,19 +2,20 @@
 
   <rd-loading data-ng-show="!movie"></rd-loading>
 
-  <section class="movie-detail" data-ng-show="movie">
+  <section class="movie-detail" data-ng-if="movie" data-ng-animate="'movie-details-animate'">
     <img class="movie-poster" data-ng-src="{{movie.posters.thumbnail}}" alt="{{movie.title}} Poster" width="61" height="91">
 
-    <header data-rd-background-image="movie.posters.original">
+    <header data-rd-background-image="movie.posters.original" >
       <h3>
         {{movie.title}}
         <small>{{movie.year}}</small>
       </h3>
-
-      <div data-movie="movie" class="rd-movie-pallete"></div>
     </header>
 
-    <rd-movie-rating data-movie="movie"></rd-movie-rating>
+    <!-- Movie Rating -->
+    <div class="movie-rating-wrapper">
+      <rd-movie-rating data-movie="movie"></rd-movie-rating>
+    </div>
 
     <a class="movie-imdb-link" data-ng-href="http://www.imdb.com/title/tt{{movie.alternate_ids.imdb}}" title="View on IMDB">View on IMDB</a>
 
@@ -22,23 +23,36 @@
       {{movie.synopsis}}
     </p>
 
+    <!-- Movie Score -->
     <rd-movie-score data-movie="movie"></rd-movie-score>
 
     <div class="row-fluid">
       <div class="span6">
         <h5>Release Dates:</h5>
         <ul>
-          <li class="released-date theather">In Theaters: {{movie.release_dates.theater | date}}</li>
-          <li class="released-date dvd">On DVD: {{movie.release_dates.dvd | date}}</li>
+          <li class="released-date theather">
+            <strong>In Theaters</strong>: {{movie.release_dates.theater | date}}
+          </li>
+          <li class="released-date dvd">
+            <strong>On DVD</strong>: {{movie.release_dates.dvd | date}}
+          </li>
         </ul>
       </div>
       <div class="span6">
         <h5>Other Info:</h5>
         <ul>
-          <li class="runtime">Runtime: {{movie.runtime | time}}</li>
-          <li class="genres">Studio: {{movie.studio}}</li>
-          <li class="genres">Genres: {{movie.genres | list}}</li>
-          <li class="directors">Directors: {{movie.abridged_directors | list:'name'}}</li>
+          <li class="runtime">
+            <strong>Runtime</strong>: {{movie.runtime | time}}
+          </li>
+          <li class="genres">
+            <strong>Studio</strong>: {{movie.studio}}
+          </li>
+          <li class="genres">
+            <strong>Genres</strong>: {{movie.genres | list}}
+          </li>
+          <li class="directors">
+            <strong>Directors</strong>: {{movie.abridged_directors | list:'name'}}
+          </li>
         </ul>
       </div>
     </div>

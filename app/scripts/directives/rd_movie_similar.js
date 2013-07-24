@@ -10,6 +10,7 @@ angular.module('angularjsRundownApp')
     return {
       templateUrl: '/views/directives/rd_movie_similar.html',
       restrict: 'E',
+      replace: true,
       controller: 'rdMovieSimilarCtrl',
       scope: {
         movie: '='

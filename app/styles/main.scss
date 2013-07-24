@@ -5,6 +5,7 @@ $linkColor: #ccc;
 @import "bootstrap-sass/lib/bootstrap";
 @import "bootstrap-sass/lib/responsive";
 @import "mixins";
+@import "animations";
 
 
 /* Put your CSS here */
@@ -59,6 +60,7 @@ a {
 }
 
 #search-box {
+  @include clearfix;
   margin-left: 0;
 
   input {
@@ -149,9 +151,7 @@ a {
     background-size: 100% auto;
     background-position: center -50px;
     min-height: emCalc(300px);
-    margin-bottom: emCalc(20px);
     margin-right: -1em;
-    margin-top: 1em;
     margin-left: -1em;
 
     h3 {
@@ -172,7 +172,6 @@ a {
     }
 
     @media (min-width: 768px) {
-      margin-top: -1em;
       @include border-top-right-radius(5px);
       @include border-bottom-left-radius(5px);
 
@@ -335,7 +334,6 @@ form[name="movie-search-form"] {
   @include pie-clearfix;
   float: right;
   text-align: right;
-  margin-top: 10px;
   padding-right: 10px;
   font-size: 0;
 
@@ -429,20 +427,32 @@ form[name="movie-search-form"] {
 
 #movie-details-view {
   min-height: 200px;
+  margin-top: 0;
+}
+
+.movie-rating-wrapper {
+  @include perspective(200);
 }
 
 .rd-movie-rating {
   @include clearfix;
   padding: emCalc(10px);
-  background: gold;
-  margin: 1em -1em;
+  background-color: #DDD;
+  margin: 0 -1em 1em;
+  @include background-image(
+    linear-gradient(top, rgba(black, 0.7), rgba(#CCC, 0), rgba(#DDD, 0)),
+    linear-gradient(bottom, rgba(black, 0.2), rgba(#CCC, 0), rgba(#DDD, 0))
+  );
+  background-size: 100% 15px, 100% 40px;
+  background-repeat: no-repeat, no-repeat;
+  background-position: top center, bottom center;
 
   span {
     float: left;
     width: 50%;
-    color: darken(gold, 30%);
+    color: #333;
     text-align: center;
-    text-shadow: 0 1px 1px rgba(white, 0.5);
+    text-shadow: 0 1px 1px rgba(white, 1);
     font-size: emCalc(40px);
     font-weight: 600;
     line-height: 1em;
@@ -455,24 +465,25 @@ form[name="movie-search-form"] {
   }
 
   h5 {
+    position: relative;
     text-align: center;
-    font-weight: 100;
-    margin-top: 1em;
+    margin-top: 0;
     margin-bottom: 0;
     clear: both;
     color: darken(gold, 40%);
-    padding: 0 emCalc(10px);
+    padding: emCalc(10px);
     text-shadow: 0 1px 1px rgba(white, 0.2);
+    font-weight: 300;
   }
 
-  @media (min-width: 530px) and (max-width: 767px) {
+  @media (min-width: 530px) {
     > div {
       float: left;
       width: 40%;
 
       span {
-        width: auto;
-        margin: emCalc(10px, 40px);
+        width: 50%;
+        padding: emCalc(10px, 40px);
       }
     }
 
@@ -480,28 +491,11 @@ form[name="movie-search-form"] {
       float: right;
       clear: right;
       width: 60%;
-      margin-top: emCalc(10px);
     }
   }
 
-  @media (min-width: 950px) {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    max-width: 250px;
-    margin-left: 2em;
-    margin-bottom: 2em;
-    margin-right: -1em;
-    background: rgba(gold, 0.8);
-    @include border-left-radius(10px);
-
-    span {
-      padding: emCalc(10px, 40px);
-    }
-
-    h5 {
-      margin-top: 0;
-    }
+  @media (min-width: 768px) {
+    @include border-bottom-right-radius(10px);
   }
 }
 

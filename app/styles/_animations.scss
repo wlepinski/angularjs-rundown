@@ -1,0 +1,67 @@
+// Animation: Movie-Details-Animate
+.movie-details-animate-enter,
+.movie-details-animate-leave {
+  @include transition(4s cubic-bezier(0.25,0.1,0.25,1) all 0);
+
+  header, .rd-movie-rating, header h3 {
+    @include transition(500ms cubic-bezier(0.25,0.1,0.25,1) all 500ms);
+  }
+
+  .rd-movie-rating {
+    @include backface-visibility(hidden);
+    @include transform-origin(left, top);
+    @include transition-delay(1s);
+  }
+
+  header h3 {
+    @include transition-delay(1s);
+  }
+
+  header h3 small {
+    @include transition-delay(1.2s);
+  }
+}
+
+.movie-details-animate-enter,
+.movie-details-animate-leave.movie-details-animate-leave-active {
+  header {
+    @include transform(translateY(40px));
+    opacity: 0;
+  }
+
+  .rd-movie-rating {
+    @include transform(rotateX(-180deg));
+  }
+
+  header h3 {
+    @include transform(translateY(-40px));
+    opacity: 0;
+  }
+}
+
+.movie-details-animate-enter.movie-details-animate-enter-active,
+.movie-details-animate-leave {
+  header, header h3 {
+    @include transform(translateY(0px));
+    opacity: 1;
+  }
+
+  .rd-movie-rating {
+    @include transform(rotateX(0deg));
+  }
+
+  header h3 {
+    @include transform(translateY(0px));
+    opacity: 1;
+  }
+}
+
+// Animation: View-Animate-Leave
+.view-animate-leave {
+  @include transition(300ms cubic-bezier(0.25,0.1,0.25,1) all 0s);
+  opacity: 1;
+}
+
+.view-animate-leave.view-animate-leave-active {
+  opacity: 0;
+}

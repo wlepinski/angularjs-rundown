@@ -32,37 +32,29 @@ a {
 
 .home-widget {
   min-height: emCalc(120px);
+  @include clearfix;
 }
 
 #app {
+  position: relative;
   margin: emCalc(70px) auto emCalc(10px);
   min-height: emCalc(350px);
   background-color: rgba(black, 0.75);
   @include border-radius(8px);
   @include box-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+  z-index: 2;
 
   &:before {
     content: '';
     background: image-url("icons_rotten_tomatoes.png");
     width: 64px;
-    height: 64px;
+    height: 62px;
     position: absolute;
     left: 50%;
-    top: 20px;
+    bottom: 100%;
+    margin-bottom: -5px;
     margin-left: -32px;
-    z-index: -1;
-  }
-
-  &:after {
-    content: '';
-    background: image-url("icons_rotten_tomatoes.png");
-    width: 64px;
-    height: 64px;
-    position: absolute;
-    left: 50%;
-    top: 20px;
-    margin-left: -32px;
-    z-index: -1;
+    @include filter(drop-shadow(0 12px 25px rgba(0,0,0,0.5)));
   }
 }
 
@@ -100,6 +92,11 @@ a {
 
 .sidebar-box {
   margin: 1em;
+
+  .rd-loading {
+    width: 16px;
+    margin: 0 auto;
+  }
 }
 
 .rd-top-rentals,
@@ -219,8 +216,6 @@ a {
 }
 
 .rd-movie-pallete {
-
-
   span {
     display: block;
     float: left;
@@ -233,13 +228,11 @@ a {
 body > .rd-movie-pallete {
   @include transform(rotate(45deg));
   height: 200%;
-  z-index: -1;
   width: 100%;
   position: fixed;
   top: -100%;
   left: -50%;
-  // margin-left: -50%;
-  // margin-top: -50%;
+  z-index: 1;
 }
 
 #movie-search-view {

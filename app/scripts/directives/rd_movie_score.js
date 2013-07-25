@@ -8,8 +8,6 @@ angular.module('angularjsRundownApp')
       replace: true,
       scope: {
         movie: '='
-      },
-      link: function postLink(scope, element, attrs) {
       }
     };
   });

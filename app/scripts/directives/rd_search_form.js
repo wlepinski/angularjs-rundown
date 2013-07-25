@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularjsRundownApp')
-  .directive('rdSearchForm', ['$location', function ($location) {
+  .directive('rdSearchForm', ['$rootScope', '$location', function ($rootScope, $location) {
       // Returns a function, that, as long as it continues to be invoked, will not
       // be triggered. The function will be called after it stops being called for
       // N milliseconds. If `immediate` is passed, trigger the function on the
@@ -25,10 +25,17 @@ angular.module('angularjsRundownApp')
         restrict: 'A',
         require: '^form',
         link: function postLink(scope, element, attrs, controller) {
+          // We need to watch on the q scope variable. When a new value
+          // arrives we need to update the $location.path and $location.search.
+          // We're using a debounce function to control how much times this method
+          // will be called during user typing. We setup up to call this function only
+          // every 300 milliseconds, any other calls between this time will be ignored.
           scope.$watch('q', debounce(function(newValue, oldValue){
             if (newValue) {
               $location.path('search');
               $location.search('q', newValue);
+
+              // The $apply here is to force the scope digest process ASAP.
               scope.$apply();
             }
           }, 300));

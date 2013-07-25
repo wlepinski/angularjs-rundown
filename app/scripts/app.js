@@ -6,7 +6,8 @@ angular.module('angularjsRundownApp', [])
       $routeProvider
         .when('/search', {
           templateUrl: 'views/search.html',
-          controller: 'SearchCtrl'
+          controller: 'SearchCtrl',
+          reloadOnSearch: false
         })
         .when('/movie/:movie_id', {
           templateUrl: 'views/movie_details.html',

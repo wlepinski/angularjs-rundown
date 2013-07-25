@@ -94,11 +94,6 @@ a {
 
 .sidebar-box {
   margin: 1em;
-
-  .rd-loading {
-    width: 16px;
-    margin: 0 auto;
-  }
 }
 
 .rd-top-rentals,
@@ -428,6 +423,20 @@ form[name="movie-search-form"] {
 #movie-details-view {
   min-height: 200px;
   margin-top: 0;
+}
+
+#view-holder {
+  position: relative;
+
+  .rd-loading {
+    padding: 1em;
+  }
+
+  .rd-loading.view-loading {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+  }
 }
 
 .movie-rating-wrapper {

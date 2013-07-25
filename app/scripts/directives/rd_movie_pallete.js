@@ -9,6 +9,7 @@ angular.module('angularjsRundownApp')
       },
       link: function postLink(scope, element, attrs) {
         element = $(element[0]);
+
         var colorThief = new ColorThief();
         var colorSpan = null;
         for (var i = 0; i < 9; i++) {

@@ -4,9 +4,6 @@ angular.module('angularjsRundownApp')
   .directive('rdMovie', function () {
     return {
       templateUrl: '/views/directives/rd_movie.html',
-      restrict: 'A',
-      link: function postLink(scope, element, attrs) {
-
-      }
+      restrict: 'A'
     };
   });

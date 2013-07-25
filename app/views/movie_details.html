@@ -1,6 +1,6 @@
 <section id="movie-details-view" class="view">
 
-  <rd-loading data-ng-show="!movie"></rd-loading>
+  <rd-loading class="view-loading" data-size="big" data-ng-show="!movie"></rd-loading>
 
   <section class="movie-detail" data-ng-if="movie" data-ng-animate="'movie-details-animate'">
     <img class="movie-poster" data-ng-src="{{movie.posters.thumbnail}}" alt="{{movie.title}} Poster" width="61" height="91">

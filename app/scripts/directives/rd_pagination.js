@@ -14,8 +14,8 @@ angular.module('angularjsRundownApp')
      */
     $scope.prevPage = function() {
       $scope.currentPage--;
+      // Process the pagination
       self.processPagination();
-
       // Call the onPaginate event handler
       $scope.onPaginate($scope);
     };
@@ -51,10 +51,6 @@ angular.module('angularjsRundownApp')
     this.processPagination = function() {
       $scope.hasNext = ($scope.itemCount > ($scope.pageSize * $scope.currentPage));
       $scope.hasPrev = ($scope.currentPage > 1);
-
-      ($scope.itemCount < ($scope.pageSize * $scope.currentPage))
-        ? $element.addClass('hide')
-        : $element.removeClass('hide');
     };
   }])
   .directive('rdPagination', ['$parse', function ($parse) {
@@ -63,17 +59,21 @@ angular.module('angularjsRundownApp')
         restrict: 'E',
         replace: true,
         controller: 'rdPaginationCtrl',
-        scope: true,
+        scope: {
+          onPaginate: '&',
+          itemCount: '=itemCount'
+        },
         link: function postLink(scope, element, attrs, controller) {
-          // Here we're parsing the attrs.onPaginate attribute into the directive's scope.
-          // We're also asseting that if the $parse doens't return a function, we need to
-          // defaults to angular.noop to avoid NPE or "Object Not a Function" errors.
-          scope.onPaginate = $parse(attrs.onPaginate) || angular.noop;
-
           // We need to watch on the pagination total to initialize the pagination.
-          scope.$watch(attrs.rdPaginationTotal, function(newValue, oldValue){
+          scope.$watch('itemCount', function(newValue, oldValue){
+            console.log(newValue);
             if (newValue) {
               controller.initializePaginationWith(newValue);
+
+              // We need to show the pagination?
+              (newValue < (scope.pageSize * scope.currentPage))
+                ? element.addClass('hide')
+                : element.removeClass('hide');
             }
           });
         }

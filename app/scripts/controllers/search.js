@@ -16,8 +16,10 @@ angular.module('angularjsRundownApp')
        * Fetch search results
        */
       var fetchResults = function () {
+        // We need to set the query on the $rootScope because the searchbox is created on the $rootScope.
+        $rootScope.query = $routeParams.q;
+
         // Search for movies using the query passed via URL
-        $scope.query = $routeParams.q;
         $scope.results = rottenTomatoesApi.search($scope.query);
         $scope.results.then(function (results) {
           $scope.total = results.total;

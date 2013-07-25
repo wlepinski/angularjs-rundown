@@ -55,8 +55,6 @@ angular.module('angularjsRundownApp')
           // Get the default options set
           var defaultOptions = baseOptions[size];
 
-          console.log(defaultOptions);
-
           // Checking if we have custom options. If not, just create an empty object to
           // avoid exceptions during the extend phase.
           attrs.options = $parse(attrs.options)() || {};

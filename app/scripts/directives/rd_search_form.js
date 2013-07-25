@@ -1,16 +1,18 @@
 'use strict';
 
 angular.module('angularjsRundownApp')
-  .directive('rdSearchForm', ['$rootScope', '$location', function ($rootScope, $location) {
+  .directive('rdSearchForm', ['$rootScope', '$location', '$routeParams',
+    function ($rootScope, $location, $routeParams) {
       // Returns a function, that, as long as it continues to be invoked, will not
       // be triggered. The function will be called after it stops being called for
       // N milliseconds. If `immediate` is passed, trigger the function on the
       // leading edge, instead of the trailing.
-      var debounce = function(func, wait, immediate) {
+      var debounce = function (func, wait, immediate) {
         var timeout;
-        return function() {
-          var context = this, args = arguments;
-          var later = function() {
+        return function () {
+          var context = this,
+            args = arguments;
+          var later = function () {
             timeout = null;
             if (!immediate) func.apply(context, args);
           };
@@ -25,12 +27,17 @@ angular.module('angularjsRundownApp')
         restrict: 'A',
         require: '^form',
         link: function postLink(scope, element, attrs, controller) {
+          // If we have a $routeParams.q setted copy the value to the scope.
+          if ($routeParams.q) {
+            scope.q = $routeParams.q;
+          }
+
           // We need to watch on the q scope variable. When a new value
           // arrives we need to update the $location.path and $location.search.
           // We're using a debounce function to control how much times this method
           // will be called during user typing. We setup up to call this function only
           // every 300 milliseconds, any other calls between this time will be ignored.
-          scope.$watch('q', debounce(function(newValue, oldValue){
+          scope.$watch('query', debounce(function (newValue, oldValue) {
             if (newValue) {
               $location.path('search');
               $location.search('q', newValue);
@@ -41,4 +48,5 @@ angular.module('angularjsRundownApp')
           }, 300));
         }
       };
-    }]);
+    }
+  ]);

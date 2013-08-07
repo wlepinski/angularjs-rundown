@@ -30,6 +30,9 @@ angular.module('angularjsRundownApp', [])
     }
   ])
   .run(function($rootScope, facebookAppId, appSession){
+    // Assign the appSession the $rootScope.appSession
+    // This means that any modification to appSession will be propagated
+    // to the scope and to the view.
     $rootScope.appSession = appSession;
 
     window.fbAsyncInit = function() {
@@ -42,9 +45,9 @@ angular.module('angularjsRundownApp', [])
       });
 
       // Additional initialization code such as adding Event Listeners goes here
-      FB.Event.subscribe('auth.statusChange', function() {
-        FB.api('/me', function(response) {
-          appSession.setCurrentUser(response);
+      FB.Event.subscribe('auth.statusChange', function(response) {
+        appSession.setCurrentUser(response, function(){
+          $rootScope.apply()
         });
       });
     };

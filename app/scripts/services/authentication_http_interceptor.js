@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('angularjsRundownApp')
-  .factory('authenticationHttpInterceptor', function($q, appSession, parseApplicationId, parseRestApiKey){
+  .factory('authenticationHttpInterceptor', function($q, $rootScope, parseApplicationId, parseRestApiKey){
     return {
       request: function (config) {
         config.headers['X-Parse-Application-Id'] = parseApplicationId;
         config.headers['X-Parse-REST-API-Key'] = parseRestApiKey;
 
-        var user = appSession.getCurrentUser();
+        var user = $rootScope.appSession.getCurrentUser();
 
         if (user) {
           config.headers['X-Parse-Session-Token'] = user.sessionToken;

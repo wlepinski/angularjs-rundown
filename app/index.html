@@ -17,9 +17,19 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 </head>
-  <body ng-app="angularjsRundownApp"
-    rd-color-thief="movieSelected"
-    rd-color-thief-property="posters.thumbnail">
+  <body ng-app="angularjsRundownApp" rd-color-thief="movieSelected" rd-color-thief-property="posters.thumbnail">
+
+    <div id="fb-root"></div>
+    <script>
+      // Load the SDK asynchronously
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 
     <div data-movie="movieSelected" class="rd-movie-pallete"></div>
 
@@ -64,14 +74,13 @@
       ga('send', 'pageview');
     </script>
 
-    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script> -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
-
     <!-- build:js scripts/plugins.js -->
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/spin.js/spin.js"></script>
     <script src="vendor_components/color-thief.js"></script>
     <!-- endbuild -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
@@ -94,6 +103,11 @@
     <script src="scripts/directives/rd_upcoming_movies.js"></script>
     <script src="scripts/directives/rd_color_thief.js"></script>
     <script src="scripts/directives/rd_movie_pallete.js"></script>
+    <script src="scripts/controllers/search_box.js"></script>
+    <script src="scripts/directives/rd_facebook_login_button.js"></script>
+    <script src="scripts/services/app_session.js"></script>
+    <script src="scripts/services/authentication_http_interceptor.js"></script>
+    <script src="scripts/services/extract_results_http_interceptor.js"></script>
     <!-- endbuild -->
 </body>
 </html>

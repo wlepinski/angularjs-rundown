@@ -20,6 +20,7 @@
   "smarttabs": true,
   "globals": {
     "angular": true,
-    "ga": true
+    "ga": true,
+    "FB": true
   }
 }

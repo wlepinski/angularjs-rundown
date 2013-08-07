@@ -1,6 +1,13 @@
 'use strict';
 
 angular.module('angularjsRundownApp', [])
+  .constant('parseApplicationId', '4kdi7WYXH9y20Lsb3EfYMLVytOttBFwjTpPcpTrO')
+  .constant('parseRestApiKey', '1l8kAcGnsjceGBGUTZ951SgtxpTdjRZPI1On5YWM')
+  .constant('facebookAppId', '177530099095061')
+  .config(function($httpProvider){
+    $httpProvider.interceptors.push('authenticationHttpInterceptor');
+    $httpProvider.interceptors.push('extractResultsHttpInterceptor');
+  })
   .config(['$routeProvider',
     function($routeProvider) {
       $routeProvider
@@ -21,4 +28,24 @@ angular.module('angularjsRundownApp', [])
           redirectTo: '/'
         });
     }
-  ]);
+  ])
+  .run(function($rootScope, facebookAppId, appSession){
+    $rootScope.appSession = appSession;
+
+    window.fbAsyncInit = function() {
+      // init the FB JS SDK
+      FB.init({
+        appId      : facebookAppId,
+        channelUrl : '//local.kinetoscope.herokuapp.com/channel.html',
+        status     : true,
+        xfbml      : true
+      });
+
+      // Additional initialization code such as adding Event Listeners goes here
+      FB.Event.subscribe('auth.statusChange', function() {
+        FB.api('/me', function(response) {
+          appSession.setCurrentUser(response);
+        });
+      });
+    };
+  });

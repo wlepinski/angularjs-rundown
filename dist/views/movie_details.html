@@ -5,6 +5,9 @@
   <section class="movie-detail" data-ng-if="movie" data-ng-animate="'movie-details-animate'">
     <img class="movie-poster" data-ng-src="{{movie.posters.thumbnail}}" alt="{{movie.title}} Poster" width="61" height="91">
 
+    <!-- Movie Rating -->
+    <rd-movie-rating data-movie="movie"></rd-movie-rating>
+
     <header data-rd-background-image="movie.posters.original">
       <h3>
         {{movie.title}}
@@ -12,9 +15,16 @@
       </h3>
     </header>
 
-    <!-- Movie Rating -->
-    <div class="movie-rating-wrapper">
-      <rd-movie-rating data-movie="movie"></rd-movie-rating>
+    <!-- Movie actions -->
+    <div class="movie-actions" data-ng-show="appSession.getCurrentUser()">
+      <input type="checkbox" id="toggleFavorited" data-ng-model="movie.favorited" ng-click="toggleMovieFavorite();">
+      <label for="toggleFavorited">Favorite Movie</label>
+    </div>
+
+    <!-- Movie consensus -->
+    <div class="movie-critic-consensus" data-ng-show="movie.critics_consensus">
+      <h5>Critics consensus</h5>
+      <p>{{movie.critics_consensus}}</p>
     </div>
 
     <a class="movie-imdb-link" data-ng-href="http://www.imdb.com/title/tt{{movie.alternate_ids.imdb}}" title="View on IMDB">View on IMDB</a>

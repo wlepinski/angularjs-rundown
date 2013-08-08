@@ -13,9 +13,12 @@
 
     <link href="http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="styles/df1357e6.main.css">
+    <link rel="stylesheet" href="styles/3ee8cf30.main.css">
 </head>
-  <body ng-app="angularjsRundownApp" rd-color-thief="movieSelected" rd-color-thief-property="posters.thumbnail">
+  <body ng-app="angularjsRundownApp" data-rd-color-thief="movieSelected" data-rd-color-thief-property="posters.thumbnail">
+
+    <!-- Facebook Roootz! -->
+    <div id="fb-root"></div>
 
     <div data-movie="movieSelected" class="rd-movie-pallete"></div>
 
@@ -28,7 +31,28 @@
       <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
+    <!-- Account info -->
+    <header id="header" class="container">
+
+      <h1>
+        <a href="#/">
+          <i class="icon-home icon-white"></i>
+          Kinetoscope
+        </a>
+      </h1>
+
+      <div id="account-info" ng-controller="AccountInfoCtrl">
+        <a href="" data-ng-click="login();" data-ng-hide="appSession.getCurrentUser()" title="Login with Facebook">
+            Login with Facebook
+        </a>
+        <span data-ng-show="appSession.getCurrentUser()">
+          <strong>{{appSession.getCurrentUser().name}}</strong>
+          <a href="" data-ng-click="logout();">Logout</a>
+        </span>
+      </div>
+    </header>
+
+    <!-- Application Container -->
     <div id="app" class="container">
       <div class="row">
         <div class="span12">
@@ -38,7 +62,9 @@
       </div>
       <div class="row">
         <!-- View Placeholder -->
-        <section id="view-holder" class="span9" data-ng-view="" data-ng-animate="{ leave: 'view-animate-leave' }"></section>
+        <section id="view-holder" class="span9" data-ng-view="" data-ng-animate="{ leave: 'view-animate-leave' }">
+        </section>
+
         <!-- Sidebar -->
         <aside id="sidebar" class="span3" data-ng-include="'views/includes/sidebar.html'"></aside>
       </div>
@@ -58,11 +84,22 @@
       ga('send', 'pageview');
     </script>
 
-    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script> -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
-
     <script src="scripts/19d435dc.plugins.js"></script>
 
-    <script src="scripts/a964407c.scripts.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+
+    <script src="scripts/35157ca7.scripts.js"></script>
+
+    <script>
+      // Load the SDK asynchronously
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 </body>
 </html>

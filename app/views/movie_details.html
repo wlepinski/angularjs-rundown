@@ -17,6 +17,12 @@
       <rd-movie-rating data-movie="movie"></rd-movie-rating>
     </div>
 
+    <!-- Movie actions -->
+    <div class="movie-actions" data-ng-show="appSession.getCurrentUser()">
+      <a href="">Favorite</a>
+      <a href="">I want to watch</a>
+    </div>
+
     <a class="movie-imdb-link" data-ng-href="http://www.imdb.com/title/tt{{movie.alternate_ids.imdb}}" title="View on IMDB">View on IMDB</a>
 
     <p data-ng-show="movie.synopsis">

@@ -15,15 +15,17 @@
       <rd-movie-rating data-movie="movie"></rd-movie-rating>
     </header>
 
-    <div class="movie-critic-consensus" data-ng-show="movie.critics_consensus">
-      <h5>Critics consensus</h5>
-      <p>{{movie.critics_consensus}}</p>
-    </div>
-
     <!-- Movie actions -->
     <div class="movie-actions" data-ng-show="appSession.getCurrentUser()">
-      <a href="">Favorite</a>
-      <a href="">I want to watch</a>
+      <input type="checkbox" id="toggleFavorited" data-ng-model="movie.favorited" ng-click="toggleMovieFavorite();">
+      <label for="toggleFavorited">Favorite Movie</label>
+    </div>
+
+    <!-- Movie consensus -->
+    <div class="movie-critic-consensus"
+      data-ng-show="movie.critics_consensus">
+      <h5>Critics consensus</h5>
+      <p>{{movie.critics_consensus}}</p>
     </div>
 
     <a class="movie-imdb-link" data-ng-href="http://www.imdb.com/title/tt{{movie.alternate_ids.imdb}}" title="View on IMDB">View on IMDB</a>

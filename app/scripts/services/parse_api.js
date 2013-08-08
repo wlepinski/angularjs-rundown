@@ -2,7 +2,17 @@
 
 angular.module('angularjsRundownApp')
   .factory('parseApi', function ($http, $q) {
+    var parseUserDefer = $q.defer();
+    var parseUser = null;
+
     return {
+      /**
+       * [ description]
+       *
+       * @param  {[type]} facebookAuthData [description]
+       *
+       * @return {[type]}                  [description]
+       */
       linkUser: function (facebookAuthData) {
         var defer = $q.defer();
 
@@ -20,7 +30,9 @@ angular.module('angularjsRundownApp')
           }
         });
 
-        request.success(function(){
+        request.success(function(user){
+          parseUserDefer.resolve(user);
+          parseUser = user;
           defer.resolve.apply(this, arguments);
         });
 
@@ -29,6 +41,51 @@ angular.module('angularjsRundownApp')
         });
 
         return defer.promise;
+      },
+
+      /**
+       * [ description]
+       *
+       * @param  {[type]} movie [description]
+       *
+       * @return {[type]}       [description]
+       */
+      isMovieFavorited: function (movie) {
+        var defer = $q.defer();
+        parseUserDefer.promise.then(function(user){
+          var favorited = (user.favorite_movies.indexOf(movie.id) !== -1);
+          defer.resolve(favorited);
+        });
+        return defer.promise;
+      },
+
+      /**
+       * [ description]
+       *
+       * @param  {[type]} movie [description]
+       *
+       * @return {[type]}       [description]
+       */
+      toggleFavoriteMovie: function(movie) {
+        var operation = (movie.favorited) ? 'AddUnique' : 'Remove';
+        var userId = parseUser.objectId;
+        var defer = $q.defer();
+
+        $http({
+          url: 'https://api.parse.com/1/users/' + userId,
+          method: 'PUT',
+          data: {
+            'favorite_movies': {
+              '__op' : operation,
+              'objects': [movie.id]
+            }
+          }
+        }).success(function(response){
+          parseUser.favorite_movies = response.favorite_movies;
+        });
+
+        return defer.promise;
       }
+
     };
   });

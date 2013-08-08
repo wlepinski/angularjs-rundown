@@ -16,7 +16,7 @@ angular.module('angularjsRundownApp', ['ngCookies'])
           controller: 'SearchCtrl',
           reloadOnSearch: false
         })
-        .when('/movie/:movie_id', {
+        .when('/movie/:movieId', {
           templateUrl: 'views/movie_details.html',
           controller: 'MovieDetailsCtrl'
         })

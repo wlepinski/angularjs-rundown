@@ -144,6 +144,45 @@ a {
     margin-left: emCalc(20px);
   }
 
+  .movie-actions {
+    margin: 0 0 1em;
+    margin-right: -1em;
+    margin-left: -1em;
+    background: #333;
+    padding: 1em;
+
+    label {
+      margin: 0;
+    }
+
+    input[type=checkbox] {
+      display:none;
+    }
+
+    input[type=checkbox] + label:before {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      @include ie7-restore-right-whitespace();
+      line-height: 14px;
+      vertical-align: text-top;
+      background-image: url($iconWhiteSpritePath);
+      background-repeat: no-repeat;
+      margin-top: 2px;
+      margin-right: 5px;
+    }
+
+    input[type=checkbox] + label:before {
+      @extend .icon-star-empty;
+      content: '';
+    }
+
+    input[type=checkbox]:checked + label:before {
+      @extend .icon-star;
+      content: '';
+    }
+  }
+
   header {
     position: relative;
     background-size: 100% auto;

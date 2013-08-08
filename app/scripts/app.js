@@ -46,8 +46,8 @@ angular.module('angularjsRundownApp', [])
 
       // Additional initialization code such as adding Event Listeners goes here
       FB.Event.subscribe('auth.statusChange', function(response) {
-        appSession.setCurrentUser(response, function(){
-          $rootScope.apply()
+        $rootScope.$apply(function(){
+          appSession.setCurrentUser(response);
         });
       });
     };

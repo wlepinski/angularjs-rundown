@@ -16,6 +16,7 @@ angular.module('angularjsRundownApp')
       .then(function(parseUser){
         // Call the Facebook API to get some more information about the user
         FB.api('/me', function(facebookUser) {
+
           currentUser = angular.extend(facebookUser, parseUser);
         });
       });

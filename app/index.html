@@ -35,32 +35,36 @@
       <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-    <!-- Header -->
-    <header id="header">
+    <!-- Account info -->
+    <header id="header" class="container">
 
+      <h1>
+        <a href="#/">
+          <i class="icon-home icon-white"></i>
+          Kinetoscope
+        </a>
+      </h1>
+
+      <div id="account-info" ng-controller="AccountInfoCtrl">
+        <a href=""
+          data-ng-click="login();"
+          data-ng-hide="appSession.getCurrentUser()"
+          title="Login with Facebook">
+            Login with Facebook
+        </a>
+        <span data-ng-show="appSession.getCurrentUser()">
+          <strong>{{appSession.getCurrentUser().name}}</strong>
+          <a href="" data-ng-click="logout();">Logout</a>
+        </span>
+      </div>
     </header>
 
     <!-- Application Container -->
     <div id="app" class="container">
       <div class="row">
-        <div class="span9">
+        <div class="span12">
           <!-- Search Box -->
           <div data-ng-include="'views/includes/search_box.html'"></div>
-        </div>
-        <div class="span3">
-          <!-- Account info -->
-          <div id="account-info" ng-controller="AccountInfoCtrl">
-            <a href=""
-              data-ng-click="login();"
-              data-ng-hide="appSession.getCurrentUser()"
-              title="Login with Facebook">
-                Login with Facebook
-            </a>
-            <span data-ng-show="appSession.getCurrentUser()">
-              Welcome, {{appSession.getCurrentUser().name}}!
-              <a href="" data-ng-click="logout();">Logout</a>
-            </span>
-          </div>
         </div>
       </div>
       <div class="row">

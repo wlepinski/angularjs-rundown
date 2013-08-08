@@ -3,15 +3,15 @@
 .movie-details-animate-leave {
   @include transition(4s cubic-bezier(0.25,0.1,0.25,1) all 0);
 
-  header, .rd-movie-rating, header h3 {
+  header, header h3 {
     @include transition(500ms cubic-bezier(0.25,0.1,0.25,1) all 500ms);
   }
 
-  .rd-movie-rating {
-    @include backface-visibility(hidden);
-    @include transform-origin(left, top);
-    @include transition-delay(1s);
-  }
+  // .rd-movie-rating {
+  //   @include backface-visibility(hidden);
+  //   @include transform-origin(left, top);
+  //   @include transition-delay(1s);
+  // }
 
   header h3 {
     @include transition-delay(1s);
@@ -29,9 +29,9 @@
     opacity: 0;
   }
 
-  .rd-movie-rating {
-    @include transform(rotateX(-180deg));
-  }
+  // .rd-movie-rating {
+  //   @include transform(rotateX(-180deg));
+  // }
 
   header h3 {
     @include transform(translateY(-40px));
@@ -46,9 +46,9 @@
     opacity: 1;
   }
 
-  .rd-movie-rating {
-    @include transform(rotateX(0deg));
-  }
+  // .rd-movie-rating {
+  //   @include transform(rotateX(0deg));
+  // }
 
   header h3 {
     @include transform(translateY(0px));

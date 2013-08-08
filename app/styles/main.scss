@@ -38,61 +38,53 @@ a {
 
 #app {
   position: relative;
-  margin: emCalc(70px) auto emCalc(10px);
+  margin: 0 auto emCalc(10px);
   min-height: emCalc(350px);
   background-color: rgba(black, 0.75);
-  @include border-radius(8px);
-  @include box-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+  @include border-bottom-radius(8px);
+  @include box-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
   z-index: 2;
+}
 
-  &:before {
-    content: '';
-    background: image-url("icons_rotten_tomatoes.png");
-    width: 64px;
-    height: 62px;
-    position: absolute;
-    left: 50%;
-    bottom: 100%;
-    margin-bottom: -5px;
-    margin-left: -32px;
-    @include filter(drop-shadow(0 12px 25px rgba(0,0,0,0.5)));
+#header {
+  position: relative;
+  margin-top: emCalc(20px);
+  @include border-top-radius(8px);
+  z-index: 1;
+  background-color: rgba(black, 0.75);
+  border-bottom: 1px dotted #555;
+
+  h1 {
+    position: relative;
+    float: left;
+    font-size: 1em;
+    margin: 0;
+    margin-left: 1em;
+
+    a {
+      float: left;
+      min-height: 30px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    small {
+      font-size: 1em;
+      color: #666;
+    }
+  }
+
+
+  #account-info {
+    float: right;
+    line-height: 40px;
+    padding: 0 1em 0;
   }
 }
 
 #search-box {
   @include clearfix;
-  margin-left: 0;
-  margin-top: 1em;
-  margin-bottom: 1em;
-
-  input {
-    width: 80%
-  }
-
-  a {
-    display: inline-block;
-    vertical-align: middle;
-    width: 15%;
-    min-height: 30px;
-    float: left;
-    text-align: center;
-
-    .icon-home {
-      vertical-align: middle;
-      margin-top: 3px;
-    }
-  }
-
-  @media (min-width: 768px) {
-
-    input {
-      width: 95%;
-    }
-
-    a {
-      width: 5%;
-    }
-  }
+  margin: 1em;
 }
 
 .sidebar-box {
@@ -135,6 +127,8 @@ a {
   margin: 1em;
 }
 
+
+
 .movie-detail {
   position: relative;
 
@@ -145,7 +139,7 @@ a {
   }
 
   .movie-actions {
-    margin: 0 0 1em;
+    margin: -1em 0 1em;
     margin-right: -1em;
     margin-left: -1em;
     background: #333;
@@ -153,6 +147,7 @@ a {
 
     label {
       margin: 0;
+      display: inline-block;
     }
 
     input[type=checkbox] {
@@ -190,6 +185,7 @@ a {
     min-height: emCalc(300px);
     margin-right: -1em;
     margin-left: -1em;
+    margin-bottom: 1em;
 
     h3 {
       position: absolute;
@@ -210,7 +206,6 @@ a {
 
     @media (min-width: 768px) {
       @include border-top-right-radius(5px);
-      @include border-bottom-left-radius(5px);
 
       h3 {
         font-size: emCalc(40px);
@@ -483,6 +478,8 @@ form[name="movie-search-form"] {
 
 .rd-movie-rating {
   @include clearfix;
+  margin-left: -1em;
+  margin-right: -1em;
 
   .critics-score-bar,
   .audience-score-bar {

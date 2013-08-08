@@ -1,13 +1,20 @@
 <section class="rd-movie-rating">
   <div class="clearfix">
-    <span class="critics_score">
-      {{movie.ratings.critics_score}}%
-      <small>Critics score</small>
-    </span>
-    <span class="audience_score">
-      {{movie.ratings.audience_score}}%
-      <small>Liked it</small>
-    </span>
+    <div class="critics-score-bar"
+      data-ng-show="movie.ratings.critics_score > 0"
+      data-score="movie.ratings.critics_score" data-rd-movie-score-bar>
+      <span class="critics_score">
+        <small>Critics score</small>
+        {{movie.ratings.critics_score}}%
+      </span>
+    </div>
+    <div class="audience-score-bar"
+      data-ng-show="movie.ratings.audience_score > 0"
+      data-score="movie.ratings.audience_score" data-rd-movie-score-bar>
+      <span class="audience_score">
+        <small>Liked it</small>
+        {{movie.ratings.audience_score}}%
+      </span>
+    </div>
   </div>
-  <h5 data-ng-show="movie.critics_consensus">{{movie.critics_consensus}}</h5>
 </section>

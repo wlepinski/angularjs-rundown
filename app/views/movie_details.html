@@ -10,11 +10,14 @@
         {{movie.title}}
         <small>{{movie.year}}</small>
       </h3>
+
+      <!-- Movie Rating -->
+      <rd-movie-rating data-movie="movie"></rd-movie-rating>
     </header>
 
-    <!-- Movie Rating -->
-    <div class="movie-rating-wrapper">
-      <rd-movie-rating data-movie="movie"></rd-movie-rating>
+    <div class="movie-critic-consensus" data-ng-show="movie.critics_consensus">
+      <h5>Critics consensus</h5>
+      <p>{{movie.critics_consensus}}</p>
     </div>
 
     <!-- Movie actions -->

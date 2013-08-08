@@ -17,7 +17,11 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 </head>
-  <body ng-app="angularjsRundownApp" rd-color-thief="movieSelected" rd-color-thief-property="posters.thumbnail">
+  <body ng-app="angularjsRundownApp"
+    data-rd-color-thief="movieSelected"
+    data-rd-color-thief-property="posters.thumbnail">
+
+    <!-- Facebook Roootz! -->
     <div id="fb-root"></div>
 
     <div data-movie="movieSelected" class="rd-movie-pallete"></div>
@@ -120,6 +124,7 @@
     <script src="scripts/services/authentication_http_interceptor.js"></script>
     <script src="scripts/services/extract_results_http_interceptor.js"></script>
     <script src="scripts/services/parse_api.js"></script>
+    <script src="scripts/directives/rd_movie_score_bar.js"></script>
     <!-- endbuild -->
 
     <script>

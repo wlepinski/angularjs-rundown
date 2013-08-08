@@ -29,7 +29,7 @@ angular.module('angularjsRundownApp', [])
         });
     }
   ])
-  .run(function($rootScope, facebookAppId, appSession){
+  .run(function($rootScope, $log, facebookAppId, appSession){
     // Assign the appSession the $rootScope.appSession
     // This means that any modification to appSession will be propagated
     // to the scope and to the view.
@@ -40,14 +40,17 @@ angular.module('angularjsRundownApp', [])
       FB.init({
         appId      : facebookAppId,
         channelUrl : '//local.kinetoscope.herokuapp.com/channel.html',
-        status     : true,
+        status     : false,
         xfbml      : true
       });
 
       // Additional initialization code such as adding Event Listeners goes here
-      FB.Event.subscribe('auth.statusChange', function(response) {
-        $rootScope.$apply(function(){
-          appSession.setCurrentUser(response);
+      FB.Event.subscribe('auth.authResponseChange', function(response) {
+        $log.debug('Facebook.authResponseChange event fired with %o', response);
+
+        appSession.setCurrentUser(response, function(){
+          $log.debug('Current app user setted. Applying to scope.');
+          $rootScope.$apply();
         });
       });
     };

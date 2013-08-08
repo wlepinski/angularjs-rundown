@@ -24,6 +24,10 @@ angular.module('angularjsRundownApp')
           defer.resolve.apply(this, arguments);
         });
 
+        request.error(function(){
+          defer.reject.apply(this, arguments);
+        });
+
         return defer.promise;
       }
     };

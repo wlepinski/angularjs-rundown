@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: SearchBoxCtrl', function () {
+describe('Controller: AccountInfoCtrl', function () {
 
   // load the controller's module
   beforeEach(module('angularjsRundownApp'));
 
-  var SearchBoxCtrl,
+  var AccountInfoCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    SearchBoxCtrl = $controller('SearchBoxCtrl', {
+    AccountInfoCtrl = $controller('AccountInfoCtrl', {
       $scope: scope
     });
   }));

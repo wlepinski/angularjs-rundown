@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('angularjsRundownApp')
-  .controller('MovieDetailsCtrl', ['$rootScope', '$scope', '$routeParams', 'rottenTomatoesApi', 'parseApi',
-    function ($rootScope, $scope, $routeParams, rottenTomatoesApi, parseApi) {
+  .controller('MovieDetailsCtrl', ['$rootScope', '$scope', '$routeParams', 'rottenTomatoesApi', 'parseApi', 'facebookApi',
+    function ($rootScope, $scope, $routeParams, rottenTomatoesApi, parseApi, facebookApi) {
       var movieInfo = rottenTomatoesApi.movieInfo($routeParams.movieId);
 
       movieInfo.then(function(movie){
@@ -12,6 +12,9 @@ angular.module('angularjsRundownApp')
       });
 
       $scope.toggleMovieFavorite = function(){
+        if ($scope.movie.favorited){
+          facebookApi.favoriteMovie($scope.movie);
+        }
         parseApi.toggleFavoriteMovie($scope.movie);
       };
 

@@ -1,0 +1,13 @@
+
+<html>
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# video: http://ogp.me/ns/video#">
+        <title><%= movie.title %></title>
+        <meta property="fb:app_id" content="<%= facebook.appId %>" />
+        <meta property="og:title" content="<%= movie.title %>" />
+        <meta property="og:image" content="<%= movie.posters.profile %>" />
+        <meta property="og:url" content="http://kinetoscope.herokuapp.com/#/movie/<%= movie.id %>" />
+        <meta property="og:type" content="video.movie" />
+    </head>
+    <body>
+    </body>
+</html>

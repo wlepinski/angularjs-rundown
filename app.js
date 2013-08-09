@@ -40,7 +40,40 @@ app.configure('production', function () {
 
 var rottenTomatoesKeys = process.env.ROTTEN_TOMATOES_APIKEY.split(',');
 
-app.all('/', function(req, res){
+var handleEscapedFragment = function (req, res, next) {
+  if (req.param('_escaped_fragment_')) {
+    var fragment = req.param('_escaped_fragment_');
+    var movieRoute = null;
+    var apiKey = rottenTomatoesKeys[Math.floor(Math.random() * rottenTomatoesKeys.length)];
+
+    if ((movieRoute = fragment.match(/movie\/(.+)/))){
+      console.log('requesting');
+      request({
+        uri: 'http://api.rottentomatoes.com/api/public/v1.0/movies/' + movieRoute[1] + '.json',
+        method: 'GET',
+        qs: util._extend({
+          apiKey: apiKey
+        }, req.query)
+      }, function(error, response, body){
+        if (error) return res.send(500, error);
+        return res.render('og_movie_details', {
+          movie: JSON.parse(body),
+          facebook: {
+            appId: '177530099095061'
+          }
+        });
+      });
+    }
+    else {
+      return res.send(404);
+    }
+  }
+  else {
+    return next();
+  }
+};
+
+app.all('/', handleEscapedFragment, function(req, res){
   res.render('index');
 });
 

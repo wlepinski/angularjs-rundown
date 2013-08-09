@@ -4,6 +4,7 @@ angular.module('angularjsRundownApp', ['ngCookies'])
   .constant('parseApplicationId', '4kdi7WYXH9y20Lsb3EfYMLVytOttBFwjTpPcpTrO')
   .constant('parseRestApiKey', '1l8kAcGnsjceGBGUTZ951SgtxpTdjRZPI1On5YWM')
   .constant('facebookAppId', '177530099095061')
+  .constant('facebookPermissions', ['email', 'user_likes', 'publish_actions'])
   .config(function($httpProvider){
     $httpProvider.interceptors.push('authenticationHttpInterceptor');
     $httpProvider.interceptors.push('extractResultsHttpInterceptor');

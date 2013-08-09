@@ -38,7 +38,7 @@ app.configure('production', function () {
   app.use(express.static(path.join(__dirname, 'dist')));
 });
 
-app.get('/', function(req, res){
+app.all('/', function(req, res){
   res.render('index');
 });
 

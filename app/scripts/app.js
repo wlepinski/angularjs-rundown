@@ -5,10 +5,14 @@ angular.module('angularjsRundownApp', ['ngCookies'])
   .constant('parseRestApiKey', '1l8kAcGnsjceGBGUTZ951SgtxpTdjRZPI1On5YWM')
   .constant('facebookAppId', '177530099095061')
   .constant('facebookPermissions', ['email', 'user_likes', 'publish_actions'])
-  .config(function($httpProvider){
-    $httpProvider.interceptors.push('authenticationHttpInterceptor');
-    $httpProvider.interceptors.push('extractResultsHttpInterceptor');
-  })
+  .config(['$locationProvider', function($locationProvider) {
+      $locationProvider.html5Mode(false);
+      $locationProvider.hashPrefix('!');
+    }])
+  .config(['$httpProvider', function($httpProvider){
+      $httpProvider.interceptors.push('authenticationHttpInterceptor');
+      $httpProvider.interceptors.push('extractResultsHttpInterceptor');
+    }])
   .config(['$routeProvider',
     function($routeProvider) {
       $routeProvider

@@ -56,7 +56,7 @@ var handleEscapedFragment = function (req, res, next) {
         }, req.query)
       }, function(error, response, body){
         if (error) return res.send(500, error);
-        return res.render('og_movie_details', {
+        return res.render('opengraph/movie_details', {
           movie: JSON.parse(body),
           facebook: {
             appId: '177530099095061'

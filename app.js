@@ -38,13 +38,15 @@ app.configure('production', function () {
   app.use(express.static(path.join(__dirname, 'dist')));
 });
 
+var rottenTomatoesKeys = process.env.ROTTEN_TOMATOES_APIKEY.split(',');
+
 app.all('/', function(req, res){
   res.render('index');
 });
 
 app.all('/api/public/v1.0/*', function (req, res) {
   var baseUrl = 'http://api.rottentomatoes.com/api/public/v1.0/';
-  var apiKey = process.env.ROTTEN_TOMATOES_APIKEY;
+  var apiKey = rottenTomatoesKeys[Math.floor(Math.random() * rottenTomatoesKeys.length)];
   var uri = baseUrl + req.params[0];
   var method = req.method.toLowerCase();
 

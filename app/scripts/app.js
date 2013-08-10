@@ -6,32 +6,31 @@ angular.module('angularjsRundownApp', ['ngCookies'])
   .constant('facebookAppId', '177530099095061')
   .constant('facebookPermissions', ['email', 'user_likes', 'publish_actions'])
   .config(['$locationProvider', function($locationProvider) {
-      $locationProvider.html5Mode(false);
-      $locationProvider.hashPrefix('!');
-    }])
-  .config(['$httpProvider', function($httpProvider){
-      $httpProvider.interceptors.push('authenticationHttpInterceptor');
-      $httpProvider.interceptors.push('extractResultsHttpInterceptor');
-    }])
+    $locationProvider.html5Mode(true).hashPrefix('!');
+  }])
+  // .config(['$httpProvider', function($httpProvider){
+  //   $httpProvider.interceptors.push('authenticationHttpInterceptor');
+  //   $httpProvider.interceptors.push('extractResultsHttpInterceptor');
+  // }])
   .config(['$routeProvider',
     function($routeProvider) {
       $routeProvider
         .when('/search', {
-          templateUrl: 'views/search.html',
+          templateUrl: '/views/search.html',
           controller: 'SearchCtrl',
           reloadOnSearch: false
         })
         .when('/movie/:movieId', {
-          templateUrl: 'views/movie_details.html',
+          templateUrl: '/views/movie_details.html',
           controller: 'MovieDetailsCtrl'
         })
         .when('/', {
-          templateUrl: 'views/main.html',
+          templateUrl: '/views/main.html',
           controller: 'MainCtrl'
         })
-        .otherwise({
-          redirectTo: '/'
-        });
+        // .otherwise({
+        //   redirectTo: '/'
+        // });
     }
   ])
   .run(['$rootScope', '$log', '$cookieStore', 'facebookAppId', 'appSession', function($rootScope, $log, $cookieStore, facebookAppId, appSession){

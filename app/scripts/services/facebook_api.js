@@ -11,7 +11,7 @@ angular.module('angularjsRundownApp')
           'me/kinetoscope:favorite',
           'post',
           {
-            movie: "http://kinetoscope.herokuapp.com/#!/movie/" + movie.id,
+            movie: "http://kinetoscope.herokuapp.com/movie/" + movie.id,
           },
           function(response) {
             defer.resolve(response);

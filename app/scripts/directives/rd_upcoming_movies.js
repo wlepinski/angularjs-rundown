@@ -6,7 +6,7 @@ angular.module('angularjsRundownApp')
   }])
   .directive('rdUpcomingMovies', function () {
     return {
-      templateUrl: 'views/directives/rd_upcoming_movies.html',
+      templateUrl: '/views/directives/rd_upcoming_movies.html',
       restrict: 'E',
       replace: true,
       controller: 'rdUpcomingMoviesCtrl',

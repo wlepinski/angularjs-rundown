@@ -8,10 +8,10 @@ angular.module('angularjsRundownApp', ['ngCookies'])
   .config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode(true).hashPrefix('!');
   }])
-  // .config(['$httpProvider', function($httpProvider){
-  //   $httpProvider.interceptors.push('authenticationHttpInterceptor');
-  //   $httpProvider.interceptors.push('extractResultsHttpInterceptor');
-  // }])
+  .config(['$httpProvider', function($httpProvider){
+    $httpProvider.interceptors.push('authenticationHttpInterceptor');
+    $httpProvider.interceptors.push('extractResultsHttpInterceptor');
+  }])
   .config(['$routeProvider',
     function($routeProvider) {
       $routeProvider
@@ -28,9 +28,9 @@ angular.module('angularjsRundownApp', ['ngCookies'])
           templateUrl: '/views/main.html',
           controller: 'MainCtrl'
         })
-        // .otherwise({
-        //   redirectTo: '/'
-        // });
+        .otherwise({
+          redirectTo: '/'
+        });
     }
   ])
   .run(['$rootScope', '$log', '$cookieStore', 'facebookAppId', 'appSession', function($rootScope, $log, $cookieStore, facebookAppId, appSession){

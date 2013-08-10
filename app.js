@@ -74,6 +74,10 @@ var handleEscapedFragment = function (req, res, next) {
 };
 
 app.all('/', function(req, res){
+  if (req.param('code')) {
+    res.redirect('/');
+  }
+
   res.render('index');
 });
 

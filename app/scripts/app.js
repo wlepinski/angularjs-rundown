@@ -63,4 +63,11 @@ angular.module('angularjsRundownApp', ['ngCookies'])
           });
         });
       };
-    }]);
+    }])
+  .run(['$rootScope', '$timeout', function($rootScope, $timeout){
+    $rootScope.$on('$viewContentLoaded', function(){
+      $timeout(function(){
+        FB.XFBML.parse();
+      }, 2000);
+    });
+  }]);

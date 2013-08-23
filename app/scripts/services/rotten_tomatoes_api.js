@@ -3,6 +3,8 @@
 angular.module('angularjsRundownApp')
   .factory('rottenTomatoesApi', ['$http', '$q',
     function ($http, $q) {
+      var BASE_URL= '/rt/api/public/v1.0';
+
       // Public API he,re
       return {
         /**
@@ -13,7 +15,7 @@ angular.module('angularjsRundownApp')
         topRentals: function () {
           var defer = $q.defer();
 
-          $http.get('/api/public/v1.0/lists/dvds/top_rentals.json')
+          $http.get(BASE_URL + '/lists/dvds/top_rentals.json')
             .success(function (data) {
               defer.resolve(data);
             });
@@ -31,7 +33,7 @@ angular.module('angularjsRundownApp')
         movieInfo: function (movieId) {
           var defer = $q.defer();
 
-          $http.get('/api/public/v1.0/movies/' + movieId + '.json')
+          $http.get(BASE_URL + '/movies/' + movieId + '.json')
             .success(function (data) {
               defer.resolve(data);
             });
@@ -48,7 +50,7 @@ angular.module('angularjsRundownApp')
         movieClips: function (movieId) {
           var defer = $q.defer();
 
-          $http.get('/api/public/v1.0/movies/' + movieId + '/clips.json')
+          $http.get(BASE_URL + '/movies/' + movieId + '/clips.json')
             .success(function (data) {
               defer.resolve(data);
             });
@@ -69,7 +71,7 @@ angular.module('angularjsRundownApp')
 
           $http({
             method: 'GET',
-            url: '/api/public/v1.0/movies/' + movieId + '/similar.json',
+            url: BASE_URL + '/movies/' + movieId + '/similar.json',
             params: {
               limit: limit
             }
@@ -88,7 +90,7 @@ angular.module('angularjsRundownApp')
         upcoming: function () {
           var defer = $q.defer();
 
-          $http.get('/api/public/v1.0/lists/movies/upcoming.json')
+          $http.get(BASE_URL + '/lists/movies/upcoming.json')
             .success(function (data) {
               defer.resolve(data);
             });
@@ -112,7 +114,7 @@ angular.module('angularjsRundownApp')
 
           $http({
             method: 'GET',
-            url: '/api/public/v1.0/movies.json',
+            url: BASE_URL + '/movies.json',
             params: {
               'q': q,
               'page': page,
@@ -135,7 +137,7 @@ angular.module('angularjsRundownApp')
 
           $http({
             method: 'GET',
-            url: '/api/public/v1.0/lists/dvds/current_releases.json',
+            url: BASE_URL + '/lists/dvds/current_releases.json',
             params: {
               'country': country,
               'page': page,
@@ -158,7 +160,7 @@ angular.module('angularjsRundownApp')
 
           $http({
             method: 'GET',
-            url: '/api/public/v1.0/lists/dvds/new_releases.json',
+            url: BASE_URL + '/lists/dvds/new_releases.json',
             params: {
               'country': country,
               'page': page,

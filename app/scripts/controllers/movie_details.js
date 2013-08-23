@@ -3,7 +3,6 @@
 angular.module('angularjsRundownApp')
   .controller('MovieDetailsCtrl', ['$rootScope', '$scope', '$routeParams', 'rottenTomatoesApi', 'parseApi', 'facebookApi',
     function ($rootScope, $scope, $routeParams, rottenTomatoesApi, parseApi, facebookApi) {
-      console.log('test', arguments);
       var movieInfo = rottenTomatoesApi.movieInfo($routeParams.movieId);
 
       movieInfo.then(function(movie){

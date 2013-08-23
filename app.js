@@ -85,7 +85,7 @@ app.all('/movie/:movieId', handleEscapedFragment, function(req, res){
   res.render('index');
 });
 
-app.all('/api/public/v1.0/*', function (req, res) {
+app.all('/rt/api/public/v1.0/*', function (req, res) {
   var baseUrl = 'http://api.rottentomatoes.com/api/public/v1.0/';
   var apiKey = rottenTomatoesKeys[Math.floor(Math.random() * rottenTomatoesKeys.length)];
   var uri = baseUrl + req.params[0];

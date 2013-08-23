@@ -1,6 +1,10 @@
-<div class="movie-card" rd-background-image="movie.posters.detailed">
-  <span class="year">{{movie.year}}</span>
-  <a href="/movie/{{movie.id}}" title="{{movie.title}}">
-    <span>{{movie.title}}</span>
-  </a>
-</div>
+<a class="movie-card" rd-background-image="movie.posters.detailed" href="/movie/{{movie.id}}" title="{{movie.title}}">
+  <div class="movie-card-info">
+    <span class="movie-card-ratings-critics-score" ng-if="movie.ratings.critics_score > 0">{{movie.ratings.critics_score}} %</span>
+    <span class="movie-card-ratings-audience-score" ng-if="movie.ratings.audience_score > 0">{{movie.ratings.audience_score}} %</span>
+  </div>
+  <span class="movie-card-title">
+    {{movie.title}}
+    <small>({{movie.year}})</small>
+  </span>
+</a>

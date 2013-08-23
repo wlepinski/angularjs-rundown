@@ -1,10 +1,10 @@
 <section class="view">
   <section id="upcoming-movies" class="home-widget">
-    <h4>Top 3 - Upcoming Movies</h4>
+    <h4>Upcoming Movies</h4>
     <rd-loading data-ng-show="!upcoming"></rd-loading>
     <div class="search_results" data-ng-show="upcoming">
       <ul class="unstyled movie-cards">
-        <li data-ng-repeat="movie in upcoming.movies | limitTo:3">
+        <li data-ng-repeat="movie in upcoming.movies | limitTo:6">
           <div data-rd-movie-card="" data-movie="movie"></div>
         </li>
       </ul>
@@ -12,11 +12,11 @@
   </section>
 
   <section id="current-released-dvds" class="home-widget">
-    <h4>Top 3 - Current released DVDs</h4>
+    <h4>Current released DVDs</h4>
     <rd-loading data-ng-show="!currentReleases"></rd-loading>
     <div class="search_results" data-ng-show="currentReleases">
       <ul class="unstyled movie-cards">
-        <li data-ng-repeat="movie in currentReleases.movies | limitTo:3">
+        <li data-ng-repeat="movie in currentReleases.movies | limitTo:6">
           <div data-rd-movie-card="" data-movie="movie"></div>
         </li>
       </ul>
@@ -24,11 +24,11 @@
   </section>
 
   <section id="new-released-dvds" class="home-widget">
-    <h4>Top 3 - New released DVDs</h4>
+    <h4>New released DVDs</h4>
     <rd-loading data-ng-show="!newReleases"></rd-loading>
     <div class="search_results" data-ng-show="newReleases">
       <ul class="unstyled movie-cards">
-        <li data-ng-repeat="movie in newReleases.movies | limitTo:3">
+        <li data-ng-repeat="movie in newReleases.movies | limitTo:6">
           <div data-rd-movie-card="" data-movie="movie"></div>
         </li>
       </ul>

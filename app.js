@@ -1,5 +1,12 @@
 'use strict';
 
+if(process.env.NODETIME_ACCOUNT_KEY) {
+  require('nodetime').profile({
+    accountKey: process.env.NODETIME_ACCOUNT_KEY,
+    appName: 'Kinetoscope' // optional
+  });
+}
+
 var express = require('express');
 var path = require('path');
 var util = require('util');

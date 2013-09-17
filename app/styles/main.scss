@@ -292,6 +292,7 @@ form[name="movie-search-form"] {
   .movie-card {
     height: 175px;
     margin-bottom: 1em;
+    display: block;
   }
 
   @media (min-width: 768px) {
@@ -314,18 +315,16 @@ form[name="movie-search-form"] {
   background-repeat: no-repeat;
   background-position: center center;
   overflow: hidden;
+  @include transform(scale(1));
   @include transition(
     background-size 200ms cubic-bezier(1, 0, 0, 1) 0ms,
     box-shadow 1000ms cubic-bezier(1, 0, 0, 1) 0ms
   );
-  @include transform(scale(1));
   z-index: 1;
 
   &:hover {
     background-size: 125% auto;
-    @include box-shadow(
-        inset 0 0 20px rgba(black, 0.8)
-    );
+    @include box-shadow(inset 0 0 20px rgba(black, 0.8));
     z-index: 2;
   }
 

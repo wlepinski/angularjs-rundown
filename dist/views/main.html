@@ -4,7 +4,7 @@
     <rd-loading data-ng-show="!upcoming"></rd-loading>
     <div class="search_results" data-ng-show="upcoming">
       <ul class="unstyled movie-cards">
-        <li data-ng-repeat="movie in upcoming.movies | limitTo:6">
+        <li data-ng-repeat="movie in upcoming.movies | limitTo:9">
           <div data-rd-movie-card="" data-movie="movie"></div>
         </li>
       </ul>
@@ -16,7 +16,7 @@
     <rd-loading data-ng-show="!currentReleases"></rd-loading>
     <div class="search_results" data-ng-show="currentReleases">
       <ul class="unstyled movie-cards">
-        <li data-ng-repeat="movie in currentReleases.movies | limitTo:6">
+        <li data-ng-repeat="movie in currentReleases.movies | limitTo:9">
           <div data-rd-movie-card="" data-movie="movie"></div>
         </li>
       </ul>
@@ -28,7 +28,7 @@
     <rd-loading data-ng-show="!newReleases"></rd-loading>
     <div class="search_results" data-ng-show="newReleases">
       <ul class="unstyled movie-cards">
-        <li data-ng-repeat="movie in newReleases.movies | limitTo:6">
+        <li data-ng-repeat="movie in newReleases.movies | limitTo:9">
           <div data-rd-movie-card="" data-movie="movie"></div>
         </li>
       </ul>

@@ -45,7 +45,7 @@ angular.module('angularjsRundownApp')
               // The $apply here is to force the scope digest process ASAP.
               scope.$apply();
             }
-          }, 300));
+          }, 1200));
         }
       };
     }

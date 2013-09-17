@@ -7,8 +7,6 @@ $linkColor: #ccc;
 @import "mixins";
 @import "animations";
 
-
-/* Put your CSS here */
 body {
   background: #444;
   font-family: Dosis, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -356,13 +354,6 @@ form[name="movie-search-form"] {
     display: block;
     text-align: center;
     padding: emCalc(10px);
-
-    // span {
-    //   display: block;
-    //   white-space: nowrap;
-    //   overflow: hidden;
-    //   text-overflow: ellipsis;
-    // }
   }
 }
 
@@ -519,24 +510,6 @@ form[name="movie-search-form"] {
     text-shadow: 0 1px 1px rgba(white, 0.2);
     font-weight: 300;
   }
-
-  // @media (min-width: 530px) {
-  //   > div {
-  //     float: left;
-  //     width: 40%;
-
-  //     span {
-  //       width: 50%;
-  //       padding: emCalc(10px, 40px);
-  //     }
-  //   }
-
-  //   h5 {
-  //     float: right;
-  //     clear: right;
-  //     width: 60%;
-  //   }
-  // }
 
   @media (min-width: 768px) {
     @include border-bottom-right-radius(10px);

@@ -81,6 +81,10 @@ app.all('/', function(req, res){
   res.render('index');
 });
 
+app.all('/search', function(req, res){
+  res.render('index');
+});
+
 app.all('/movie/:movieId', handleEscapedFragment, function(req, res){
   res.render('index');
 });

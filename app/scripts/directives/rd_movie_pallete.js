@@ -7,19 +7,20 @@ angular.module('angularjsRundownApp')
       scope: {
         movie: '='
       },
-      link: function postLink(scope, element, attrs) {
+      link: function postLink(scope, element) {
         element = $(element[0]);
 
         var colorThief = new ColorThief();
         var colorSpan = null;
+
         for (var i = 0; i < 9; i++) {
           colorSpan = $('<span></span>');
           element.append(colorSpan);
-        };
+        }
 
         var colorSpans = element.find('span');
 
-        scope.$watch('movie', function(newValue, oldValue, scope){
+        scope.$watch('movie', function(newValue){
           if (newValue) {
             // We need to create a new image to calculate the palette
             var image = new Image();

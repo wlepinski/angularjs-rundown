@@ -14,19 +14,24 @@ angular.module('angularjsRundownApp')
             args = arguments;
           var later = function () {
             timeout = null;
-            if (!immediate) func.apply(context, args);
+            if (!immediate) {
+              func.apply(context, args);
+            }
           };
           var callNow = immediate && !timeout;
           clearTimeout(timeout);
           timeout = setTimeout(later, wait);
-          if (callNow) func.apply(context, args);
+
+          if (callNow) {
+            func.apply(context, args);
+          }
         };
       };
 
       return {
         restrict: 'A',
         require: '^form',
-        link: function postLink(scope, element, attrs, controller) {
+        link: function postLink(scope) {
           // If we have a $routeParams.q setted copy the value to the scope.
           if ($routeParams.q) {
             scope.q = $routeParams.q;
@@ -37,7 +42,7 @@ angular.module('angularjsRundownApp')
           // We're using a debounce function to control how much times this method
           // will be called during user typing. We setup up to call this function only
           // every 300 milliseconds, any other calls between this time will be ignored.
-          scope.$watch('query', debounce(function (newValue, oldValue) {
+          scope.$watch('query', debounce(function (newValue) {
             if (newValue) {
               $location.path('search');
               $location.search('q', newValue);

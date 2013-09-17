@@ -50,7 +50,7 @@ angular.module('angularjsRundownApp')
         replace: true,
         restrict: 'E',
         link: function postLink(scope, element, attrs) {
-          var size = attrs.size || "default";
+          var size = attrs.size || 'default';
 
           // Get the default options set
           var defaultOptions = baseOptions[size];

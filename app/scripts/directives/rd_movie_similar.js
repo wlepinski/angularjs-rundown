@@ -16,7 +16,7 @@ angular.module('angularjsRundownApp')
         movie: '='
       },
       link: function postLink(scope, element, attrs, controller) {
-        scope.$watch('movie', function (newValue, oldValue) {
+        scope.$watch('movie', function (newValue) {
           if (newValue) {
             controller.loadMovieClips();
           }

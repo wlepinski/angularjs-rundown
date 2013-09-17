@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularjsRundownApp')
-  .controller('rdPaginationCtrl', ['$scope', '$element', function($scope, $element){
+  .controller('rdPaginationCtrl', ['$scope', function($scope){
     $scope.hasPrev = false;
     $scope.hasNext = false;
     $scope.pageSize = 30;
@@ -53,9 +53,9 @@ angular.module('angularjsRundownApp')
       $scope.hasPrev = ($scope.currentPage > 1);
     };
   }])
-  .directive('rdPagination', ['$parse', function ($parse) {
+  .directive('rdPagination', [function () {
       return {
-        templateUrl: "/views/directives/rd_pagination.html",
+        templateUrl: '/views/directives/rd_pagination.html',
         restrict: 'E',
         replace: true,
         controller: 'rdPaginationCtrl',
@@ -65,15 +65,18 @@ angular.module('angularjsRundownApp')
         },
         link: function postLink(scope, element, attrs, controller) {
           // We need to watch on the pagination total to initialize the pagination.
-          scope.$watch('itemCount', function(newValue, oldValue){
+          scope.$watch('itemCount', function(newValue){
             console.log(newValue);
             if (newValue) {
               controller.initializePaginationWith(newValue);
 
               // We need to show the pagination?
-              (newValue < (scope.pageSize * scope.currentPage))
-                ? element.addClass('hide')
-                : element.removeClass('hide');
+              if (newValue < (scope.pageSize * scope.currentPage)) {
+                element.addClass('hide');
+              }
+              else {
+                element.removeClass('hide');
+              }
             }
           });
         }

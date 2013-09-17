@@ -5,7 +5,7 @@ angular.module('angularjsRundownApp')
     return {
       restrict: 'A',
       link: function postLink(scope, element, attrs) {
-        scope.$watch(attrs.rdBackgroundImage, function(newValue, oldValue, scope){
+        scope.$watch(attrs.rdBackgroundImage, function(newValue){
           if (newValue) {
             var image = new Image();
 

@@ -9,10 +9,14 @@ angular.module('angularjsRundownApp')
     };
 
     return function (input, property) {
-      if (!input) return;
+      if (!input) {
+        return;
+      }
+
       if (property) {
         input = input.map(getProp(property));
       }
+
       return input.join(', ');
     };
   });
